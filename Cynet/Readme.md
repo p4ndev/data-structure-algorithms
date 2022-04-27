@@ -1,4 +1,8 @@
 
+# User Interface & Experience
+There's some screenshot from pages in React TS / HTML / CSS.
+`Planning/uix` from 01 to 04....jpg
+
 # Design & Architecture
 
 ## Interface
@@ -36,7 +40,7 @@ BackEnd folder (.Net API Project)
 docker image build -t cynet-backend:1.0 .
 
 # Run below to create a container
-docker run -p 5000:5000 cynet-backend:1.0
+docker run -d -p 5000:5000 cynet-backend:1.0
 
 # Open Swagger on your browser
 http://localhost:5000/swagger/index.html

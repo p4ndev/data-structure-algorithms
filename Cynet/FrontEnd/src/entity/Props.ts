@@ -1,7 +1,7 @@
 
 export type AppProps = {}
 
-export type ClickableProps = { title : string, linkTo? : string, cssClass? : string };
+export type ClickableProps = { title : string, linkTo? : string, cssClass? : string, onClick? : () => void };
 
 export type HeaderProps = { prefix : string, strong : string, suffix? : string };
 

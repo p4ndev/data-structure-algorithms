@@ -1,7 +1,23 @@
-import React          from 'react';
-import { MainHeader } from '../dumb';
+import React, { useEffect, useState }   from 'react';
+import { MainHeader }                   from '../dumb';
+import ActivityService                  from '../../service/ActivityService';
+import { IEmployeeActivity }            from '../../entity/EmployeeActivity';
+import StorageProvider                  from '../../provider/StorageProvider';
 
 export const Report = () => {
+
+  const activityDataSource : IEmployeeActivity[] = [];
+  
+  const ReportIn = () => <><strong role="icon">«</strong> Arriving</>;
+  const ReportOut = () => <>Leaving <strong role="icon">»</strong></>;
+
+  const [email,             setEmail]           = useState(StorageProvider.GetEmail());
+  const [activities,        setActivities]      = useState(activityDataSource);
+
+  useEffect(() => {
+    ActivityService.RetrieveAsync(email)
+      .then(res => setActivities(res.data as IEmployeeActivity[]));
+  }, []);
 
   return (
     <main>
@@ -17,26 +33,22 @@ export const Report = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>email1@uol.com.br</td>
-              <td>01/02/2022 10:10 AM</td>
-              <td className="text-center">
-                <strong role="icon">«</strong> Arriving
-              </td>
-            </tr>
-            <tr>
-              <td>email1@uol.com.br</td>
-              <td>01/02/2022 10:10 AM</td>
-              <td className="text-center">
-                Leaving <strong role="icon">»</strong>
-              </td>
-            </tr>
+            {
+              activities.map(
+                a => (
+                  <tr key={a.id}>
+                    <td>{ a.email }</td>
+                    <td>{ a.period.toString().replace("T", " ") }</td>
+                    <td className="text-center">
+                      { a.action.toString() === "In" && <ReportIn /> }               
+                      { a.action.toString() === "Out" && <ReportOut /> }
+                    </td>
+                  </tr>
+                )
+              )
+            }
           </tbody>
       </table>
-
-      <p style={{ textAlign: "right", fontSize: "0.9em", paddingTop: "5px", opacity: 0.3 }}>
-        ...from <em>worldcellos@gmail.com</em>
-      </p>
 
     </main>
   );
