@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BackEnd.Interface.Base;
+using BackEnd.Interface.Domain;
 using BackEnd.Provider;
 using BackEnd.Entity;
 
@@ -34,13 +34,18 @@ public class ActivityService : IActivity{
         return true;
     }
 
-    public async Task<IEnumerable<EmployeeActivity>?> RetrieveAsync() {
-        IEnumerable<EmployeeActivity>? res = null;
+    public async Task<IEnumerable<EmployeeActivityDTO>?> RetrieveAsync() {
+        IEnumerable<EmployeeActivityDTO>? res = null;
 
         if (IsValid())
             res = await _context!.EmployeeActivities.Where(
                 e => e.Employee.Email.Equals(_employee!.Email)
-            ).ToListAsync();
+            ).Select(ea => new EmployeeActivityDTO() {
+                Id = ea.Id,
+                Email = ea.Employee.Email,
+                Period = ea.CreatedAt,
+                Action = ea.ActivityType.Name
+            }).ToListAsync();
 
         return res;
     }

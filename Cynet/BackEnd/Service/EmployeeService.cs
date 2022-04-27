@@ -11,6 +11,9 @@ public class EmployeeService : IEmployee{
 
     public EmployeeService(DataContext context) => _context = context;
 
-    public async Task<IEnumerable<Employee>?> RetrieveAsync()
-        => await _context!.Employees.ToListAsync();
+    public async Task<IEnumerable<EmployeeDTO>?> RetrieveAsync()
+        => await _context!.Employees.Select(e => new EmployeeDTO() {
+            Id = e.Id,
+            Email = e.Email
+        }).ToListAsync();
 }

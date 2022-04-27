@@ -3,4 +3,4 @@ using BackEnd.Entity;
 
 namespace BackEnd.Interface.Domain;
 
-public interface IEmployee : IRetrievable<Employee>{ }
+public interface IEmployee : IRetrievable<EmployeeDTO> { }

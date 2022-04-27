@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using BackEnd.Interface.Base;
+using BackEnd.Interface.Domain;
 using BackEnd.Provider;
 using BackEnd.Entity;
 
