@@ -1,79 +1,50 @@
-﻿
-var inp = new List<int> { 2, 3, 1, 8, 3, 4, 2 };
-CountSortOnlyPositives(inp);
+﻿CrossCuttings.ExecutionTimer tmr;
 
-/*    Time: O(n) ||||||||||||||||| Space: O(n)    */
-static void CountSortOnlyPositives(List<int> input){
+var PositiveAndNegative = () => {
+    tmr = new();
+    var inp = new List<int> { -5, -10, 0, -3, 8, 5, -1, 10, -3 };
+    Console.WriteLine("Input:\n{0}\n", String.Join(",", inp));
+    tmr.Run<List<int>>(PositivesAndNegatives.Arrange, inp);
+    Console.WriteLine("Output:\n{0}\n", String.Join(",", inp));
 
-	if (input.Count <= 0) return;
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.Write(tmr.Milliseconds());
+    Console.WriteLine(" ms\n");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("-------------------------------------------\n");
+};
 
-	#region Declaration
+var OnlyPositive = () => {
+    tmr = new();
+    var inp = new List<int> { 2, 3, 1, 8, 3, 4, 2 };
+    Console.WriteLine("Input:\n{0}\n", String.Join(",", inp));
+    tmr.Run<List<int>>(Positives.Arrange, inp);
+    Console.WriteLine("Output:\n{0}\n", String.Join(",", inp));
 
-	int? max;
-	int x = 0, y = 0, z = 0;
-	List<int> count = new(), output = new();
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.Write(tmr.Milliseconds());
+    Console.WriteLine(" ms\n");
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("-------------------------------------------\n");
+};
 
-	#endregion
+var OnlyChars = () => {
+    tmr = new();
+    var inp = new char[] { 'g', 'u', 's', 't', 'a', 'v', 'o', '1', '@', '!', '@', '1', 's' };
+    Console.WriteLine("Input:\n{0}\n", String.Join(",", inp));
+    tmr.Run<char[]>(Chars.Arrange, inp);
+    Console.WriteLine("Output:\n{0}\n", String.Join(",", inp));
 
-	#region Finding max number
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.Write(tmr.Milliseconds());
+    Console.WriteLine(" ms\n");
+};
 
-	max = input[0];
-	output.Add(0);
+// ========================================================================
+// ========================================================================
+// ========================================================================
 
-	for (int i = 1; i < input.Count; i++)
-	{
-		if (input[i] > max)
-			max = input[i];
-		output.Add(0);
-	}
-
-	#endregion
-
-	#region Filling aux array with 0
-
-	for (int i = 0; i < (max + 1); i++)
-		count.Add(0);
-
-	#endregion
-
-	#region Incrementing once found
-
-	for (int i = 0; i < input.Count; i++){
-		x = input[i];
-		count[x]++;
-	}
-
-	#endregion
-
-	#region Cumulative auxiliary index sum
-
-	for (int i = 0; i < count.Count; i++)
-	{
-		z = (i == 0 ? 0 : (i - 1));
-		y = count[z];
-		count[i] += y;
-	}
-
-	#endregion
-
-	#region Placing items based on subtraction
-
-	for (int i = 0; i < input.Count; i++)
-	{
-
-		x = input[i];
-		y = count[x];
-		z = y - 1;
-
-		output[z] = x;
-		count[x]--;
-
-	}
-
-	#endregion
-
-	Console.WriteLine("Input:\n{0}", String.Join(",", input));
-	Console.WriteLine("\nOutput:\n{0}", String.Join(",", output));
-	Console.ReadKey();
-
-}
+PositiveAndNegative();
+OnlyPositive();
+OnlyChars();
+Console.ReadKey();
