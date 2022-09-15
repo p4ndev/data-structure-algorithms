@@ -1,11 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System;
+﻿
+// Giving an array of integers, returns two sub-arrays
+// that have the same sum (possible partitioned)
 
-// Giving an array of integers, returns two sub-arrays that have the same sum.
+// Wors problem ever from Exponent Youtube Channel :(
 
-var inp = new int[] { 4, 1, 3, 3, 1, 2 }; // 1, 3, 3, 1
-var res = SubArray_With_SameSum(inp);
+var inp = new List<int> { 1, 3, 2, 2, 3, 1 };
+//var inp = new List<int> { 1, 3, 2, 3, 2, 1 };
+//var inp = new List<int> { 2, 1, 3, 2, 1, 3 };
+//var inp = new List<int> { 0, 0, 0, 0, 0, 0 };
+//var inp = new List<int> { 2, 1, 3, 1 };
+//var inp = new List<int> { 2, 1, 3 };
+//var inp = new List<int>();
+
+var res = SubArray_With_SameSum_v1(inp);
 
 if (res.HasValue)
     Console.WriteLine(
@@ -16,31 +23,60 @@ if (res.HasValue)
 else
     Console.WriteLine("None");
 
-// ======================== Time: O(n)     Space: O(1) =========================
+(IList<int>, IList<int>)? SubArray_With_Same_Sum_v2(List<int> a){
 
-(IEnumerable<int>, IEnumerable<int>)? SubArray_With_SameSum(int[] inp){
+    if (a.Count.Equals(0) || !(a.Count % 2).Equals(0)) return null;
 
-    if (inp.Length.Equals(0) || !(inp.Length % 2).Equals(0))
+    int s = a.Sum();
+
+    if (s.Equals(0) || !(s % 2).Equals(0)) return null;
+
+    int t = (s / 2);
+    int c = (a.Count / 2);
+    var _a = new List<int>(c);
+
+    for (int i = 0; i < a.Count; i++) {
+
+        if (a[i] <= t) {
+            t -= a[i];
+            _a.Add(a[i]);
+            a.RemoveAt(i);
+            i--;
+        }
+
+        if (_a.Count >= c) break;
+
+    }
+
+    return (a, _a);
+
+}
+
+(IEnumerable<int>, IEnumerable<int>)? SubArray_With_SameSum_v1(List<int> a){
+
+    int c = a.Count;
+
+    if (c.Equals(0) || !(c % 2).Equals(0))
         return null;
 
-    int sum = inp.Sum();
+    int s = a.Sum();
 
-    if (sum.Equals(0) || !(sum % 2).Equals(0))
+    if (s.Equals(0) || !(s % 2).Equals(0))
         return null;
 
-    int i = 0, j = 0, target = (sum / 2);
+    int i, j, t = (s / 2);
 
-    for (i = 0, j = 0; i < inp.Length; i++){
-        j += inp[i];
-        if (j >= target)
+    for (i = 0, j = 0; i < c; i++){
+        j += a[i];
+        if (j >= t)
             break;
     }
 
     j = (i + 1);
 
     return (
-        inp.Take(j),
-        inp.Skip(j)
+        a.Take(j),
+        a.Skip(j)
     );
 
 }
