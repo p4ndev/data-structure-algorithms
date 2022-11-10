@@ -98,7 +98,33 @@ public static class AlgorithmImplementation{
 
     }
 
-    public static int? FindSuccessor(char[] input, char letter) {
+    public static int? FindSuccessor(char[] input, char letter){
+
+        int? current = null;
+        SortedDictionary<char, int> occ = new();
+        IEnumerator<KeyValuePair<char, int>> enu;
+
+        // Sorted last occurrences with its indexes (distincted)
+        for (int i = (input.Length - 1); i >= 0; i--) {
+            char k = input[i];
+            if (!occ.ContainsKey(k))
+                occ.Add(k, i);
+        }
+
+        // After current letter, expose the next index (if occurs)
+        enu = occ.GetEnumerator();
+        while (enu.MoveNext()) {
+            if (current.HasValue)
+                return enu.Current.Value;
+            if (enu.Current.Key.Equals(letter))
+                current = enu.Current.Value;
+        }
+
+        return null;
+
+    }
+
+    public static int? FindSuccessor_v1(char[] input, char letter) {
 
         int i;
         int? idx        = null;
