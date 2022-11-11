@@ -1,6 +1,0 @@
-lmno
-dcba
-dcbb
-abdc
-abcd
-fedcbabcd
