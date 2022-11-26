@@ -5,5 +5,6 @@
 
     public bool HasPeek() => Head is not null;
     public bool HasTail() => Tail is not null;
+    public bool IsEmpty() => (!HasPeek() && !HasTail());
 
 }

@@ -2,8 +2,7 @@
 
     private bool Exit() {
 
-        if (!HasPeek() && !HasTail())
-            return true;
+        if (IsEmpty()) return true;
 
         if (Head!.Next is null) {
             Head = Tail = null;

@@ -31,5 +31,33 @@ public partial class Node{
 
         }
 
+        [Fact]
+        public void UT003_Empty() {
+
+            // Act
+            _sut = new();
+
+            // Assert 
+            Assert.True(_sut.IsEmpty());
+
+        }
+
+        [Fact]
+        public void UT003_NotEmpty(){
+
+            // Arrange
+            _sut = new();
+            var temp0 = new Node<string>("AnyData0");
+            var temp1 = new Node<string>("AnyData1");
+
+            // Act
+            temp0.Next = temp1;
+            _sut.Next = temp0;
+
+            // Assert 
+            Assert.False(_sut.IsEmpty());
+
+        }
+
     }
 }

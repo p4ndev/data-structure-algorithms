@@ -22,3 +22,6 @@ CrossCuttings/obj/Debug/net6.0/CrossCuttings.assets.cache
 CrossCuttings/obj/Debug/net6.0/CrossCuttings.csproj.AssemblyReference.cache
 CrossCuttings/obj/Debug/net6.0/CrossCuttings.GeneratedMSBuildEditorConfig.editorconfig
 CrossCuttings/obj/Debug/net6.0/CrossCuttings.GlobalUsings.g.cs
+/bin
+/obj
+/.vs
