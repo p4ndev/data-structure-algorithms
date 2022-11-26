@@ -1,5 +1,9 @@
 ﻿public partial class LinkedNodeList<T> {
-    
+
+    // UpdateFirst
+
+    // UpdateLast
+
     public bool Update(T from, T to) {
         bool output = false;
         if (HasPeek()) {

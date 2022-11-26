@@ -1,4 +1,4 @@
-﻿namespace Complete.UnitTest.Searches;
+﻿namespace Complete.UnitTest.Selects;
 
 public class Both {
 
