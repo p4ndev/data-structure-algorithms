@@ -45,4 +45,30 @@
 
     }
 
+    public void RemoveAt(int index) {
+
+        if (index < 0 || (index + 1) > Count)
+            return;
+
+        if (index.Equals(0)) {
+            RemoveFirst();
+            return;
+        }
+
+        if ((index + 1).Equals(Count)) {
+            RemoveLast();
+            return;
+        }
+
+        var previous = FindAt(index - 1);
+        var next     = FindAt(index + 1);
+
+        if (previous is not null && next is not null)
+        {
+            previous.Next = next;
+            Decrement();
+        }
+
+    }
+
 }
