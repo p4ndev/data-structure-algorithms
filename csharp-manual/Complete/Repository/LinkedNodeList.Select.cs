@@ -18,4 +18,27 @@
         return (null, -1);
     }
 
+    public Node<T>? FindAt(int index) {
+        if (HasPeek()) {
+
+            int _index = 0;
+            Node<T>? iterator = Head!;
+
+            if (index.Equals(_index))
+                return iterator;
+
+            while (iterator is not null) {
+
+                if (index.Equals(_index))
+                    return iterator;
+
+                iterator = iterator.Next;
+                _index++;
+
+            }
+
+        }
+        return null;
+    }
+
 }

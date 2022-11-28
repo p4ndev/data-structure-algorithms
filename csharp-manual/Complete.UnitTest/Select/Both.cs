@@ -77,4 +77,43 @@ public class Both {
 
     }
 
+    [Fact]
+    public void UT005_Found_Index() {
+
+        // Arrange
+        sut = new();
+        sut.AddFirst(10);
+        sut.AddLast(20);
+        sut.AddLast(30);
+        sut.AddLast(40);
+        sut.AddLast(50);
+
+        // Act
+        var entry = sut!.FindAt(2);
+
+        // Assert
+        Assert.NotNull(entry);
+        Assert.Equal(30, entry!.Data);
+
+    }
+
+    [Fact]
+    public void UT006_NotFound_Index() {
+
+        // Arrange
+        sut = new();
+        sut.AddFirst(10);
+        sut.AddLast(20);
+        sut.AddLast(30);
+        sut.AddLast(40);
+        sut.AddLast(50);
+
+        // Act
+        var entry = sut!.FindAt(30);
+
+        // Assert
+        Assert.Null(entry);
+
+    }
+
 }
