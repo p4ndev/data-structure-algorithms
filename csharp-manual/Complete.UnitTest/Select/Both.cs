@@ -2,16 +2,16 @@
 
 public class Both {
 
-    private LinkedNodeList<int>? sut;
+    private LinkedNodeList<int>? _sut;
 
     [Fact]
     public void UT001_Empty(){
 
         // Arrange
-        sut = new();
+        _sut = new();
         
         // Act
-        var three = sut!.Find(3);
+        var three = _sut!.Find(3);
 
         // Assert 
         Assert.Null(three.Item);
@@ -23,12 +23,12 @@ public class Both {
     public void UT002_Single(){
 
         // Arrange
-        sut = new();
+        _sut = new();
 
         // Act
 
-        sut.AddFirst(3);
-        var three = sut!.Find(3);
+        _sut.AddFirst(3);
+        var three = _sut!.Find(3);
 
         // Assert 
         Assert.NotNull(three.Item);
@@ -40,15 +40,15 @@ public class Both {
     public void UT003_Found_Fourty() {
 
         // Arrange
-        sut = new();
-        sut.AddFirst(10);
-        sut.AddLast(20);
-        sut.AddLast(30);
-        sut.AddLast(40);
-        sut.AddLast(50);
+        _sut = new();
+        _sut.AddFirst(10);
+        _sut.AddLast(20);
+        _sut.AddLast(30);
+        _sut.AddLast(40);
+        _sut.AddLast(50);
 
         // Act
-        var fourty = sut!.Find(40);
+        var fourty = _sut!.Find(40);
 
         // Assert 
         Assert.NotNull(fourty.Item);
@@ -61,15 +61,15 @@ public class Both {
     public void UT004_NotFound_Sixty() {
 
         // Arrange
-        sut = new();
-        sut.AddFirst(10);
-        sut.AddLast(20);
-        sut.AddLast(30);
-        sut.AddLast(40);
-        sut.AddLast(50);
+        _sut = new();
+        _sut.AddFirst(10);
+        _sut.AddLast(20);
+        _sut.AddLast(30);
+        _sut.AddLast(40);
+        _sut.AddLast(50);
 
         // Act
-        var fourty = sut!.Find(60);
+        var fourty = _sut!.Find(60);
 
         // Assert
         Assert.Null(fourty.Item);
@@ -81,15 +81,15 @@ public class Both {
     public void UT005_Found_Index() {
 
         // Arrange
-        sut = new();
-        sut.AddFirst(10);
-        sut.AddLast(20);
-        sut.AddLast(30);
-        sut.AddLast(40);
-        sut.AddLast(50);
+        _sut = new();
+        _sut.AddFirst(10);
+        _sut.AddLast(20);
+        _sut.AddLast(30);
+        _sut.AddLast(40);
+        _sut.AddLast(50);
 
         // Act
-        var entry = sut!.FindAt(2);
+        var entry = _sut!.FindAt(2);
 
         // Assert
         Assert.NotNull(entry);
@@ -101,15 +101,15 @@ public class Both {
     public void UT006_NotFound_Index() {
 
         // Arrange
-        sut = new();
-        sut.AddFirst(10);
-        sut.AddLast(20);
-        sut.AddLast(30);
-        sut.AddLast(40);
-        sut.AddLast(50);
+        _sut = new();
+        _sut.AddFirst(10);
+        _sut.AddLast(20);
+        _sut.AddLast(30);
+        _sut.AddLast(40);
+        _sut.AddLast(50);
 
         // Act
-        var entry = sut!.FindAt(30);
+        var entry = _sut!.FindAt(30);
 
         // Assert
         Assert.Null(entry);

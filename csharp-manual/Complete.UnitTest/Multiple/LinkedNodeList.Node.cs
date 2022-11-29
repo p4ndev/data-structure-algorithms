@@ -26,5 +26,35 @@ public partial class LinkedNodeList{
 
         }
 
+        [Fact]
+        public void UT005_Index_Inside() {
+
+            // Arrange
+            _sut.AddLast("Marcos");
+            _sut.AddLast("Santos");
+            _sut.AddLast("Gustavo");
+            _sut.AddLast("Henrique");
+
+            // Act
+            var entry = _sut.IsOutside(2);
+
+            // Assert
+            Assert.False(entry);
+
+        }
+
+        [Fact]
+        public void UT006_Index_Outside() {
+
+            // Act
+            var entry0 = _sut.IsOutside(200);
+            var entry1 = _sut.IsOutside(-200);
+
+            // Assert
+            Assert.True(entry0);
+            Assert.True(entry1);
+
+        }
+
     }
 }

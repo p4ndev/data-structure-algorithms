@@ -3,20 +3,20 @@
 public partial class Insert{
     public class Node {
     
-        private LinkedNodeList<int>? sut;
+        private LinkedNodeList<int>? _sut;
 
         [Fact]
         public void UT001_AddFirst_Empty() {
 
             // Arrange
-            sut = new();
+            _sut = new();
             
             // Act
-            sut.AddFirst(10);
+            _sut.AddFirst(10);
 
             // Assert
-            Assert.True(sut.HasPeek());
-            Assert.True(sut.HasTail());
+            Assert.True(_sut.HasPeek());
+            Assert.True(_sut.HasTail());
 
         }
 
@@ -24,14 +24,14 @@ public partial class Insert{
         public void UT002_AddLast_Empty() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.AddLast(10);
+            _sut.AddLast(10);
 
             // Assert
-            Assert.True(sut.HasPeek());
-            Assert.True(sut.HasTail());
+            Assert.True(_sut.HasPeek());
+            Assert.True(_sut.HasTail());
 
         }
 
@@ -39,15 +39,15 @@ public partial class Insert{
         public void UT003_AddLast_Singular() {
 
             // Arrange
-            sut = new();
+            _sut = new();
             
             // Act
-            sut.AddLast(10);
-            sut.AddLast(20);
+            _sut.AddLast(10);
+            _sut.AddLast(20);
 
             // Assert
-            Assert.True(sut.HasPeek());
-            Assert.True(sut.HasTail());
+            Assert.True(_sut.HasPeek());
+            Assert.True(_sut.HasTail());
 
         }
 
@@ -55,15 +55,15 @@ public partial class Insert{
         public void UT004_AddFirst_Singular() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.AddFirst(20);
-            sut.AddFirst(10);
+            _sut.AddFirst(20);
+            _sut.AddFirst(10);
 
             // Assert
-            Assert.True(sut.HasPeek());
-            Assert.True(sut.HasTail());
+            Assert.True(_sut.HasPeek());
+            Assert.True(_sut.HasTail());
 
         }
 
@@ -71,18 +71,18 @@ public partial class Insert{
         public void UT005_Add_NonOrdered() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.AddLast(20);
-            sut.AddLast(30);
-            sut.AddFirst(10);
-            sut.AddLast(40);
-            sut.AddLast(50);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+            _sut.AddFirst(10);
+            _sut.AddLast(40);
+            _sut.AddLast(50);
 
             // Assert
-            Assert.True(sut.HasPeek());
-            Assert.True(sut.HasTail());
+            Assert.True(_sut.HasPeek());
+            Assert.True(_sut.HasTail());
 
         }
     

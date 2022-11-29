@@ -3,20 +3,20 @@
 public partial class Remove{
     public class Node{
 
-        private LinkedNodeList<int>? sut;
+        private LinkedNodeList<int>? _sut;
 
         [Fact]
         public void UT001_RemoveFirst_Empty() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.RemoveFirst();
+            _sut.RemoveFirst();
 
             // Assert
-            Assert.False(sut.HasPeek());
-            Assert.False(sut.HasTail());
+            Assert.False(_sut.HasPeek());
+            Assert.False(_sut.HasTail());
 
         }
 
@@ -24,15 +24,15 @@ public partial class Remove{
         public void UT002_RemoveLast_Empty() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.AddFirst(100);
-            sut.RemoveLast();
+            _sut.AddFirst(100);
+            _sut.RemoveLast();
 
             // Assert
-            Assert.False(sut.HasPeek());
-            Assert.False(sut.HasTail());
+            Assert.False(_sut.HasPeek());
+            Assert.False(_sut.HasTail());
 
         }
 
@@ -40,15 +40,15 @@ public partial class Remove{
         public void UT003_RemoveFirst_Singular() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.AddFirst(100);
-            sut.RemoveFirst();
+            _sut.AddFirst(100);
+            _sut.RemoveFirst();
 
             // Assert 
-            Assert.False(sut.HasPeek());
-            Assert.False(sut.HasTail());
+            Assert.False(_sut.HasPeek());
+            Assert.False(_sut.HasTail());
 
         }
 
@@ -56,14 +56,14 @@ public partial class Remove{
         public void UT004_RemoveLast_Singular() {
 
             // Arrange
-            sut = new();
+            _sut = new();
 
             // Act
-            sut.RemoveLast();
+            _sut.RemoveLast();
 
             // Assert
-            Assert.False(sut.HasPeek());
-            Assert.False(sut.HasTail());
+            Assert.False(_sut.HasPeek());
+            Assert.False(_sut.HasTail());
 
         }
 

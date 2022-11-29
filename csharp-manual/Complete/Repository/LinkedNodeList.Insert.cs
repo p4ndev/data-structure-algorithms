@@ -30,4 +30,30 @@
         Increment();
     }
 
+    public void AddAt(T data, int index) {
+
+        if (IsOutside(index))
+            return;
+
+        if (index.Equals(0)) {
+            AddFirst(data);
+            return;
+        }
+        
+        Node<T>? current = FindAt(index);
+
+        if (current is not null) {
+            Node<T>? newNode = new(current!.Data!);
+            current.Data = data;
+            newNode.Next = current.Next;
+            current.Next = newNode;
+
+            if ((index + 1).Equals(Count))
+                Tail = newNode;
+
+            Increment();
+        }
+
+    }
+
 }

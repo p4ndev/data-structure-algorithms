@@ -47,7 +47,7 @@
 
     public void RemoveAt(int index) {
 
-        if (index < 0 || (index + 1) > Count)
+        if (IsOutside(index))
             return;
 
         if (index.Equals(0)) {
