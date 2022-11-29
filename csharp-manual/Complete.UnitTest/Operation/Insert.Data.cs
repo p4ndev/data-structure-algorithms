@@ -260,5 +260,103 @@ public partial class Insert{
 
         }
 
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void UT011_AddBefore(bool isFirstOperation) {
+
+            // Arrange
+            _sut = new();
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+
+            // Act
+            if (isFirstOperation)
+                _sut.AddBefore(5, 10);
+            else
+                _sut.AddBefore(25, 30);
+
+            // Assert 
+            if (isFirstOperation) {
+                var first = _sut.First();
+                Assert.NotNull(first);
+                Assert.Equal(5, first!.Data);
+            } else {
+                var last = _sut.Last();
+                Assert.NotNull(last);
+                Assert.Equal(30, last!.Data);
+            }
+
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void UT012_AddAfter(bool isFirstOperation) {
+
+            // Arrange
+            _sut = new();
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+
+            // Act
+            if (isFirstOperation)
+                _sut.AddAfter(15, 10);
+            else
+                _sut.AddAfter(35, 30);
+
+            // Assert 
+            if (isFirstOperation) {
+                var first = _sut.First();
+                Assert.NotNull(first);
+                Assert.Equal(10, first!.Data);
+            } else {
+                var last = _sut.Last();
+                Assert.NotNull(last);
+                Assert.Equal(35, last!.Data);
+            }
+
+        }
+
+        [Fact]
+        public void UT013_AddBefore_Middle() {
+
+            // Arrange
+            _sut = new();
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+
+            // Act
+            _sut.AddBefore(15, 20);
+            var fifteen = _sut.FindAt(1);
+
+            // Assert 
+            Assert.NotNull(fifteen);
+            Assert.Equal(15, fifteen!.Data);
+
+        }
+
+        [Fact]
+        public void UT014_AddAfter_Middle() {
+
+            // Arrange
+            _sut = new();
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+
+            // Act
+            _sut.AddAfter(25, 20);
+            var twentyFive = _sut.FindAt(2);
+
+            // Assert 
+            Assert.NotNull(twentyFive);
+            Assert.Equal(25, twentyFive!.Data);
+
+        }
+
     }
 }

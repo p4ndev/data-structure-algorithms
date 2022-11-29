@@ -56,4 +56,46 @@
 
     }
 
+    public void AddBefore(T data, T predicate) {
+        var scope = Find(predicate);
+        if (scope.Item is not null) {
+
+            if (scope.Index.Equals(0)) {
+                AddFirst(data);
+                return;
+            }
+
+            Node<T> newNode = new(scope.Item!.Data!);
+            newNode.Next = scope.Item.Next;
+
+            scope.Item.Data = data;
+            scope.Item.Next = newNode;
+
+            if (scope.Index.Equals(Count - 1))
+                Tail = newNode;
+
+            Increment();
+
+        }
+    }
+    
+    public void AddAfter(T data, T predicate) {
+        var scope = Find(predicate);
+        if (scope.Item is not null){
+
+            if ((scope.Index + 1).Equals(Count)) {
+                AddLast(data);
+                return;
+            }
+
+            Node<T>? newNode = new(data);
+            newNode.Next = scope.Item.Next;
+            scope.Item.Next = newNode;
+
+            Increment();
+
+        }
+    }
+
+
 }
