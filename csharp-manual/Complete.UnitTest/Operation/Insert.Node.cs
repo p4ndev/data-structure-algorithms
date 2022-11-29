@@ -85,6 +85,6 @@ public partial class Insert{
             Assert.True(_sut.HasTail());
 
         }
-    
+
     }
 }

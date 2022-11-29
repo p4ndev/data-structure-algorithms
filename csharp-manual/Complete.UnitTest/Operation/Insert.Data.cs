@@ -180,5 +180,85 @@ public partial class Insert{
 
         }
 
+        [Fact]
+        public void UT007_RemoveAt_FirstIndex() {
+            
+            // Arrange
+            _sut = new();
+
+            // Act
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+            
+            _sut.RemoveAt(0);
+            var first = _sut.First();
+
+            // Assert 
+            Assert.NotNull(first);
+            Assert.Equal(20, first!.Data);
+
+        }
+
+        [Fact]
+        public void UT008_RemoveAt_LastIndex() {
+
+            // Arrange
+            _sut = new();
+
+            // Act
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+
+            _sut.RemoveAt(2);
+            var last = _sut.Last();
+
+            // Assert 
+            Assert.NotNull(last);
+            Assert.Equal(20, last!.Data);
+
+        }
+
+        [Fact]
+        public void UT009_UpdateAt_FirstIndex_Head() {
+
+            // Arrange
+            _sut = new();
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+            _sut.AddLast(40);
+
+            // Act
+            _sut.UpdateAt(15, 0);
+            var first = _sut.First();
+
+            // Assert 
+            Assert.NotNull(first);
+            Assert.Equal(15, first!.Data);
+
+        }
+
+        [Fact]
+        public void UT010_UpdateAt_LastIndex_Tail() {
+
+            // Arrange
+            _sut = new();
+            _sut.AddFirst(10);
+            _sut.AddLast(20);
+            _sut.AddLast(30);
+            _sut.AddLast(40);
+
+            // Act
+            _sut.UpdateAt(45, 3);
+            var last = _sut.Last();
+
+            // Assert 
+            Assert.NotNull(last);
+            Assert.Equal(45, last!.Data);
+
+        }
+
     }
 }
