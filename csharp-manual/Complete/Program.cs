@@ -1,16 +1,18 @@
-﻿var lnl = new LinkedNodeList<int>();
+﻿var pro = System.Diagnostics.Process.GetCurrentProcess();
+var stp = new System.Diagnostics.Stopwatch();
+var fak = Enumerable.Range(1, 5);
+var lnl = new LinkedNodeList<int>();
 
-lnl.AddFirst(10);
-lnl.AddLast(20);
-lnl.AddLast(30);
-// 10 -> 20 -> 30
+foreach (int item in fak)
+    lnl.AddLast(item * 10);
 
-lnl.AddBefore(15, 20);
-lnl.AddAfter(25, 20);
-// 10 -> 15 -> 20 -> 25 -> 30
+stp.Start();
+lnl.Reverse();
+stp.Stop();
 
-lnl.AddBefore(5, 10);
-lnl.AddAfter(35, 30);
-// 5 -> 10 -> 15 -> 20 -> 25 -> 30 -> 35
-
-Console.WriteLine("Done...");
+Console.WriteLine(
+    "{0} ms with {1} nodes | Memory: {2} kb",
+    stp.Elapsed.TotalMilliseconds,
+    lnl.Count,
+    (pro.PrivateMemorySize64 / 1024)
+);

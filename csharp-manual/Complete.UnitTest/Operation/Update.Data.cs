@@ -170,5 +170,33 @@ public partial class Update{
 
         }
 
+        [Fact]
+        public void UT011_Reverse() {
+
+            // Arrange            
+            Fill();
+
+            // Act
+            var first       = _sut!.FindAt(0)!.Data;
+            var middle      = _sut!.FindAt(2)!.Data;
+            var last        = _sut!.FindAt(4)!.Data;
+
+            _sut!.Reverse();
+
+            var _first      = _sut!.FindAt(0)!.Data;
+            var _middle     = _sut!.FindAt(2)!.Data;
+            var _last       = _sut!.FindAt(4)!.Data;
+
+            // Assert 
+            Assert.Equal(10, first);
+            Assert.Equal(30, middle);
+            Assert.Equal(50, last);
+
+            Assert.Equal(50, _first);
+            Assert.Equal(30, _middle);
+            Assert.Equal(10, _last);
+
+        }
+
     }
 }
