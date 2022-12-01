@@ -41,4 +41,30 @@
         return null;
     }
 
+    public T[]? ToArray() {        
+        T[] output;
+        if (!HasPeek()) return null;
+
+        int idx = 0;
+        output = new T[Count];
+        Node<T>? iterator = Head!;
+
+        while (iterator is not null) {
+            output[idx] = iterator.Data!;
+            iterator = iterator.Next;
+            idx++;
+        }
+
+        return output;
+    }
+
+    public IEnumerable<T?> ToStream() {
+        Node<T>? temp, iterator = Head!;
+        while (iterator is not null) {
+            temp        = iterator;
+            iterator    = iterator.Next;
+            yield return temp.Data;
+        }
+    }
+
 }
