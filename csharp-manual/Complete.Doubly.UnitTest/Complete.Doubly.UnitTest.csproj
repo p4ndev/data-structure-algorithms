@@ -22,12 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Select\" />
-    <Folder Include="Remove\" />
-    <Folder Include="Update\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Complete.Doubly\Complete.Doubly.csproj" />
   </ItemGroup>
 

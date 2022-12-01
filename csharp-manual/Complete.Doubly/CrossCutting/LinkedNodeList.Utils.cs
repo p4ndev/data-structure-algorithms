@@ -32,4 +32,25 @@
 
     }
 
+    public Node? FirstOrDefault() => Head;
+
+    public Node? LastOrDefault() => Tail;
+
+    public Node? SingleOrDefault(int data){
+        foreach (Node item in MoveNext())
+            if (item.Data.Equals(data))
+                return item;
+        return null;
+    }
+
+    public Node? ElementAt(int index){
+        int idx = 0;
+        foreach (Node item in MoveNext()) {
+            if (idx.Equals(index))
+                return item;
+            idx++;
+        }
+        return null;
+    }
+
 }

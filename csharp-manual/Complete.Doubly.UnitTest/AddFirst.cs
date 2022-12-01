@@ -1,6 +1,6 @@
 namespace Complete.Doubly.UnitTest.Insert;
 
-public class AddLast{
+public class AddFirst{
 
     private int _begin, _end;
     private LinkedNodeList? _sut;
@@ -11,10 +11,10 @@ public class AddLast{
         // Arrange
         _sut = new();
         _begin = _end = 0;
-        
+
         // Act
         _begin = _sut.Count;
-        _sut.AddLast(10);
+        _sut.AddFirst(10);
         _end = _sut.Count;
 
         // Assert
@@ -32,9 +32,9 @@ public class AddLast{
 
         // Act
         _begin = _sut.Count;
-        _sut.AddLast(10);
-        _sut.AddLast(20);
-        _sut.AddLast(30);
+        _sut.AddFirst(30);
+        _sut.AddFirst(20);
+        _sut.AddFirst(10);
         _end = _sut.Count;
 
         // Assert
@@ -44,20 +44,20 @@ public class AddLast{
     }
 
     [Fact]
-    public void UT003_Data() {
+    public void UT003_Data(){
 
         // Arrange
         int idx = 0;
         _sut = new();
-        var arr = new[] { 30, 20, 10 };
+        var arr = new[] { 10, 20, 30 };
 
         // Act
-        _sut.AddLast(arr[idx + 2]); // 10
-        _sut.AddLast(arr[idx + 1]); // 20
-        _sut.AddLast(arr[idx]);     // 30
+        _sut.AddFirst(arr[idx + 2]);
+        _sut.AddFirst(arr[idx + 1]);
+        _sut.AddFirst(arr[idx]);
 
         // Assert
-        foreach (var node in _sut.MovePrevious()) {
+        foreach (var node in _sut.MoveNext()){
             Assert.Equal(arr[idx], node.Data);
             idx++;
         }
