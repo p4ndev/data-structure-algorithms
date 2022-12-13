@@ -5,7 +5,8 @@ public sealed class Node{
     public int              Data        { get; private set; }
     public Categorization   Category    { get; private set; }
     
-    public bool             HasVisited  { get; set; }
+    public bool             MinVisited  { get; set; }
+    public bool             MaxVisited  { get; set; }
 
     public Node?            Left        { get; private set; }
     public Node?            Right       { get; private set; }

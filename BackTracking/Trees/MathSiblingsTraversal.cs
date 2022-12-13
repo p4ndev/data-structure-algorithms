@@ -12,6 +12,8 @@ public class MathSiblingsTraversal : FutureTree{
             }
         }
 
+    #region Comparion
+    
     private bool IsValid(Node? node) {
 
         if (node is null)
@@ -32,6 +34,10 @@ public class MathSiblingsTraversal : FutureTree{
         return true;
 
     }
+
+    #endregion
+
+    #region Business Logic
 
     // Priority: 2
     private Node? FullNode(Node node){
@@ -75,6 +81,8 @@ public class MathSiblingsTraversal : FutureTree{
         return null;
 
     }
+
+    #endregion
 
     public override IEnumerable<int>? Find() {
 
