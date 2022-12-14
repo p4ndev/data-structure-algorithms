@@ -1,0 +1,15 @@
+C:\live-coding\binary-tree-iterative\bin\Debug\net6.0\binary-tree-iterative.exe
+C:\live-coding\binary-tree-iterative\bin\Debug\net6.0\binary-tree-iterative.deps.json
+C:\live-coding\binary-tree-iterative\bin\Debug\net6.0\binary-tree-iterative.runtimeconfig.json
+C:\live-coding\binary-tree-iterative\bin\Debug\net6.0\binary-tree-iterative.dll
+C:\live-coding\binary-tree-iterative\bin\Debug\net6.0\binary-tree-iterative.pdb
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.csproj.AssemblyReference.cache
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.GeneratedMSBuildEditorConfig.editorconfig
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.AssemblyInfoInputs.cache
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.AssemblyInfo.cs
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.csproj.CoreCompileInputs.cache
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.dll
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\refint\binary-tree-iterative.dll
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.pdb
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\binary-tree-iterative.genruntimeconfig.cache
+C:\live-coding\binary-tree-iterative\obj\Debug\net6.0\ref\binary-tree-iterative.dll

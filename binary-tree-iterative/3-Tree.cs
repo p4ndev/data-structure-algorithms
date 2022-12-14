@@ -1,8 +1,8 @@
-﻿namespace hacker_rank;
-
-internal class Tree{
+﻿internal class Tree{
 
     public Node? Root { get; set; } = null;
+
+    #region Insert
 
     public Tree Add(int num, ActionType action = ActionType.ROOT) {
         switch (action) {
@@ -23,6 +23,14 @@ internal class Tree{
         return this;
     }
 
+    private void AddRoot(int num)   => Root         = new(num);
+    private void AddLeft(int num)   => Root!.Left   = new(num);
+    private void AddRight(int num)  => Root!.Right  = new(num);
+
+    #endregion
+
+    #region Merge
+
     public Tree Merge(Tree current, ActionType action) {
         if (current.Root is not null){
             switch (action){
@@ -39,6 +47,13 @@ internal class Tree{
         }
         return this;
     }
+
+    private void MergeLeft(Node node)   => Root!.Left   = node;
+    private void MergeRight(Node node)  => Root!.Right  = node;
+
+    #endregion
+    
+    #region Traverse
 
     public void Traverse(SearchType order) {
         switch (order){
@@ -64,23 +79,6 @@ internal class Tree{
         }
         Console.WriteLine();
     }
-
-    #region Insert
-
-    private void AddRoot(int num) => Root = new Node() { Data = num };
-    private void AddLeft(int num) => Root!.Left = new Node() { Data = num };
-    private void AddRight(int num) => Root!.Right = new Node() { Data = num };
-
-    #endregion
-
-    #region Merge
-
-    private void MergeLeft(Node node)   => Root!.Left   = node;
-    private void MergeRight(Node node)  => Root!.Right  = node;
-
-    #endregion
-    
-    #region Traverse
 
     private void TraversePre(Node? node) {
         if (node is null) return;
