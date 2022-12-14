@@ -34,12 +34,6 @@
 var mz = new MazeTree();
 var bt = mz.Build();
 
-// Simplest way to find nodes recursively
-var rt      = new RegularTraversal(bt, 0, 8);
-var zero    = rt.Find(0);
-var six     = rt.Find(6);
-var twenty  = rt.Find(20);
-
 // Based on children focused on math operation
 var mst = new MathSiblingsTraversal(bt, 0, 8);
 var re0 = mst.Find();
@@ -48,8 +42,8 @@ var re0 = mst.Find();
 var mmt = new MinMaxTraversal(bt, 0, 8);
 var re1 = mmt.Find();
 
-// Every single possibilities first, and then best
-var sst = new StateSpaceTree(bt, 0, 8);
+// All possibilities and cases recursively
+var sst = new StateTreeTraversal(bt, 0, 8);
 var re2 = sst.Find();
 
 Console.WriteLine("Done...");
