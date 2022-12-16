@@ -3,19 +3,17 @@
                         .Add(4, ActionType.LEFT)
                         .Add(5, ActionType.RIGHT);
 
-// ========================================
+// =================================================
 
 var first = new Tree()
     .Add(1)
         .Merge(last, ActionType.LEFT)
         .Add(3, ActionType.RIGHT);
 
-// ========================================
+// =================================================
 
-//first.Traverse(SearchType.PRE);
-//first.Traverse(SearchType.IN);
-//first.Traverse(SearchType.POST);
+//first.DepthFirstSearch(OrderType.PRE);
+//first.DepthFirstSearch(OrderType.IN);
+//first.DepthFirstSearch(OrderType.POST);
 
-// ========================================
-
-Console.WriteLine("Done...");
+first.BreadthFirstSearch();
