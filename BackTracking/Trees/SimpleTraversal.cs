@@ -1,10 +1,10 @@
 ﻿namespace Maze;
 
-public class StateTreeTraversal : FutureTree{
+public class SimpleTraversal : FutureTree{
 
     private Queue<int> _queue;
 
-    public StateTreeTraversal(Tree tree, int start, int end)
+    public SimpleTraversal(Tree tree, int start, int end)
         : base(tree, start, end) => _queue = new();
 
     private Node? SingleOrDefault(int number, Node? node){
