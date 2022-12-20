@@ -42,11 +42,11 @@ var re0 = mst.Find();
 var mmt = new MinMaxTraversal(bt, 0, 8);
 var re1 = mmt.Find();
 
-// Simple traverse cases recursively
+// Simple traverse all cases recursively
 var str = new SimpleTraversal(bt, 0, 8);
 var re2 = str.Find();
 
-// Build a graph with all possibilities
+// Every possibilities by removing all nodes
 var sst = new StateSpaceTree(bt, 0, 8);
 var re3 = sst.Find();
 

@@ -15,6 +15,10 @@ public class MazeTree{
         root.AddLeft(1);
         root.AddRight(3);
 
+        _bt.Increment();
+        _bt.Increment();
+        _bt.Increment();
+
     }
 
     private void Build_Lvl_1() {
@@ -24,6 +28,7 @@ public class MazeTree{
 
         if (one is null) return;
         one.AddRight(2);
+        _bt.Increment();
 
     }
 
@@ -33,8 +38,12 @@ public class MazeTree{
         var three = _bt.Root.Right;
 
         if (three is null) return null;
+        
         three.AddLeft(4);
         three.AddRight(6);
+
+        _bt.Increment();
+        _bt.Increment();
 
         return three;
 
@@ -49,6 +58,9 @@ public class MazeTree{
         four!.AddLeft(5);
         four!.AddRight(7);
 
+        _bt.Increment();
+        _bt.Increment();
+
         return four;
 
     }
@@ -60,6 +72,7 @@ public class MazeTree{
 
         if (seven is null) return;
         seven.AddRight(8);
+        _bt.Increment();
 
     }
 

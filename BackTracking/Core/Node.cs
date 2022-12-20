@@ -15,6 +15,9 @@ public sealed class Node{
 
     public Node(int term) : base() => Data = term;
 
+    public void RemoveLeft()    => Left     = null;
+    public void RemoveRight()   => Right    = null;
+
     public void AddLeft(int term) {
         Left = Helper.CreateNode(term);
         Handle();

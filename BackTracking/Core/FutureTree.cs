@@ -2,8 +2,8 @@
 
 public abstract class FutureTree{
 
-    protected readonly Tree   _tree;
     protected readonly int    _start;
+    protected readonly Tree   _tree;
     protected readonly int    _end;
 
     public FutureTree(Tree tree, int start, int end){
