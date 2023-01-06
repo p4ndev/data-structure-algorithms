@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Hard.BasicCalculator();
+wrapper = new Hard.MinCandy();
 
 wrapper.EntryPoint();
