@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Easy.LongestCommonPrefix();
+wrapper = new Hard.MedianTwoSortedArrays();
 
 wrapper.EntryPoint();
