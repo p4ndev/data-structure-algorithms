@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Hard.MinCandy();
+wrapper = new Easy.LongestCommonPrefix();
 
 wrapper.EntryPoint();

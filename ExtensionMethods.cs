@@ -11,7 +11,7 @@ public static class Display{
     }
 
     public static void Out(object input, bool assertion) {
-        ForegroundColor = input.Equals(assertion) ? ConsoleColor.Green : ConsoleColor.Red;
+        ForegroundColor = assertion ? ConsoleColor.Green : ConsoleColor.Red;
         WriteLine(input);
         ResetConsole();
     }
