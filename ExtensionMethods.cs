@@ -17,4 +17,5 @@ public static class Display{
     }
 
     private static void ResetConsole() => ForegroundColor = ConsoleColor.White;
+
 }

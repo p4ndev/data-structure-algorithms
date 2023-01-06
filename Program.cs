@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Hard.LongestValidParentheses();
+wrapper = new Hard.BasicCalculator();
 
 wrapper.EntryPoint();
