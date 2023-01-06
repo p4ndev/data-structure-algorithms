@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using static System.Console;
 
 namespace Hard;
 
@@ -18,16 +17,16 @@ public class LeastRecentlyUsed : IProblem{
 
         Put(1, 1);
         Put(2, 2);
-        Display(input: 1, expected: 1);
+        Display.Out(input: 1, expected: 1);
 
         Put(3, 3);
-        Display(input: 2, expected: -1);
+        Display.Out(input: 2, expected: -1);
 
         Put(4, 4);
-        Display(input: 1, expected: -1);
+        Display.Out(input: 1, expected: -1);
 
-        Display(input: 3, expected: 3);
-        Display(input: 4, expected: 4);
+        Display.Out(input: 3, expected: 3);
+        Display.Out(input: 4, expected: 4);
 
     }
 
@@ -35,13 +34,6 @@ public class LeastRecentlyUsed : IProblem{
         if (_cache.ContainsKey(key))
             return (int)_cache[key]!;
         return -1;
-    }
-
-    private void Display(int input, int expected) {
-        var output = Get(input);
-        ForegroundColor = output.Equals(expected) ? ConsoleColor.Green : ConsoleColor.Red;
-        WriteLine(output);
-        ForegroundColor = ConsoleColor.White;
     }
 
     private void Put(int key, int value) {

@@ -15,9 +15,8 @@ public class AddTwoNumbers : IProblem{
         var result  = Run(input0, input1);
         bool assert = expected.SequenceEqual(result);
 
-        Console.ForegroundColor = assert ? ConsoleColor.Green : ConsoleColor.Red;
-        Console.WriteLine(assert);
-        Console.ForegroundColor = ConsoleColor.White;
+        Display.Out("Both are equal?");
+        Display.Out(assert ? "Yes" : "No", assert);
 
     }
 
