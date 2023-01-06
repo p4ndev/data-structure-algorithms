@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Hard.MedianTwoSortedArrays();
+wrapper = new Easy.Reverse32BitInteger();
 
 wrapper.EntryPoint();
