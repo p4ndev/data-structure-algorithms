@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Easy.Reverse32BitInteger();
+wrapper = new Easy.TwoSum();
 
 wrapper.EntryPoint();
