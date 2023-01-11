@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Easy.TwoSum();
+wrapper = new Medium.Permutations();
 
 wrapper.EntryPoint();
