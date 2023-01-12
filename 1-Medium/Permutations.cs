@@ -16,7 +16,7 @@ public class Permutations : IProblem{
 
     public void EntryPoint(){
 
-        var input = new[] { 1, 2 };
+        var input = new[] { 1, 2, 3 };
         var permutation = new int[input.Length];
 
         Node[] graph = Create(input);
@@ -67,7 +67,6 @@ public class Permutations : IProblem{
         }
 
     }
-
 
 }
 
