@@ -16,13 +16,13 @@ public class Permutations : IProblem{
 
     public void EntryPoint(){
 
-        var input = new[] { 1, 2, 3 };
-        var permutation = new int[input.Length];
+        var arr = new[] { 1, 2, 3 };
+        var per = new int[arr.Length];
 
-        Node[] graph = Create(input);
-        DFS(graph, input, permutation, 0);
+        Node[] graph = Create(arr);
+        DFS(graph, arr, per, 0);
 
-        Display.Out(_lst.Count + " permutations with [" + String.Join(',', input) + "]\n");
+        Display.Out(_lst.Count + " permutations with [" + String.Join(',', arr) + "]\n");
         _lst.ForEach(entry => Display.Out(String.Join(' ', entry)));
 
     }
@@ -44,12 +44,12 @@ public class Permutations : IProblem{
 
     }
 
-    public void DFS(Node[] graph, int[] arr, int[] permutation, int level){
+    public void DFS(Node[] graph, int[] arr, int[] per, int level){
 
         if (level.Equals(arr.Length)){
 
             var temp = new int[arr.Length];
-            permutation.CopyTo(temp, 0);
+            per.CopyTo(temp, 0);
             _lst.Add(temp);
             return;
 
@@ -59,8 +59,8 @@ public class Permutations : IProblem{
             if (!graph[i].Visited){
 
                 graph[i].Visited = true;
-                permutation[level] = arr[graph[i].Index];
-                DFS(graph, arr, permutation, level + 1);
+                per[level] = arr[graph[i].Index];
+                DFS(graph, arr, per, level + 1);
                 graph[i].Visited = false;
 
             }
