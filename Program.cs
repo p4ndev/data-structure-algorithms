@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Medium.ThreeSumTriplets();
+wrapper = new Medium.LSWRC();
 
 wrapper.EntryPoint();
