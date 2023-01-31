@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Medium.Permutations();
+wrapper = new Medium.ThreeSumTriplets();
 
 wrapper.EntryPoint();
