@@ -1,5 +1,5 @@
 ﻿IProblem wrapper;
 
-wrapper = new Medium.LSWRC();
+wrapper = new Easy.ClimbingStaircase();
 
 wrapper.EntryPoint();
