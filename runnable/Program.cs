@@ -1,79 +1,34 @@
-﻿/*
+﻿using System.Text;
 
-Given an array of binary digits 0 and 1, sort the array so that all zeros are at one end and all ones are at the other.
+ListNode ReverseList(ListNode head)
+{
+    ListNode prev = null;
+    ListNode curr = head;
 
-Which end does not matter. To sort the array, swap any two adjacent elements. Determine the minimum number of sswaps to sort the array.
-
-Example:
-arr = [0,1,0,1]
-
-With 1 move, switching elements 1 and 2, yields [0,0,1,1] a sorted array
-
-arr = [1, 1, 1, 1, 0, 1, 0, 1]
-
-Perform the following minimal sequence of 3 moves
-
-    1 1 1 1 0 1 0 1
-
-    1 1 1 1 1 0 1 0
-            |_| |_| => +2 steps to sort the array
-
-    1 1 1 1 1 1 0 0
-              |_|   => +1 step to sort the array
-
-Constraint:
-1 <= n <= 10 ^ 5
-arr[i] is in the set { 0, 1 }
-
-*/
-
-var arrEmpty = new List<int>();
-var arr0 = new List<int>() { 1, 1, 1, 0, 0, 0 };
-var arr1 = new List<int>() { 0, 1 };
-var arr2 = new List<int>() { 0, 0, 1, 0 };
-var arr3 = new List<int>() { 1, 1, 1, 1, 0, 1, 0, 1 };
-var arr7 = new List<int>() { 1, 0, 1, 1, 0, 1, 0, 1 };
-var arr18 = new List<int>() { 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1 };
-var arr25 = new List<int>() { 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1 };
-var arr29 = new List<int>() { 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0 };
-var arr31 = new List<int>() { 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0 };
-var arr34 = new List<int>() { 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1 };
-var arr45 = new List<int>() { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 };
-var arr47 = new List<int>() { 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0 };
-
-Console.WriteLine(minSwapCounterSortDesc(arrEmpty));
-Console.WriteLine(minSwapCounterSortDesc(arr0));
-
-Console.WriteLine(minSwapCounterSortDesc(arr1));
-Console.WriteLine(minSwapCounterSortDesc(arr2));
-Console.WriteLine(minSwapCounterSortDesc(arr3));
-Console.WriteLine(minSwapCounterSortDesc(arr7));
-
-Console.WriteLine(minSwapCounterSortDesc(arr18));
-Console.WriteLine(minSwapCounterSortDesc(arr25));
-Console.WriteLine(minSwapCounterSortDesc(arr29));
-
-Console.WriteLine(minSwapCounterSortDesc(arr31));
-Console.WriteLine(minSwapCounterSortDesc(arr34));
-Console.WriteLine(minSwapCounterSortDesc(arr45));
-Console.WriteLine(minSwapCounterSortDesc(arr47));
-
-int minSwapCounterSortDesc(List<int> arr) {
-    int moves = 0;
-
-    for (int i = 0; i <= (arr.Count - 1); i++)
+    while (curr != null)
     {
-        if (arr[i] == 0)
-        {
-            for (int j = (i + 1); j <= (arr.Count - 1); j++)
-            {
-                if (arr[j] == 1)
-                {
-                    moves++;
-                }                    
-            }                
-        }
+        ListNode temp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = temp;
     }
 
-    return moves;
+    return prev;
 }
+
+ListNode input = new(1);
+input.next = new ListNode(2);
+input.next.next = new ListNode(3);
+input.next.next.next = new ListNode(4);
+input.next.next.next.next = new ListNode(5);
+
+ListNode output = ReverseList(input);
+
+var sb = new StringBuilder();
+
+while (output is not null) {
+    sb.Append(output.val).Append(" ");
+    output = output.next;
+}
+
+Console.WriteLine(sb.ToString());

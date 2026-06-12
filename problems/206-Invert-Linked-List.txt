@@ -1,0 +1,24 @@
+1ms Runtime	4,45% Beats	    42 Mb Memory		70% Beats
+https://leetcode.com/problems/reverse-linked-list/submissions/2031106636
+
+
+
+
+
+Melhor sem space O(n):
+--------------------------------------------------------------------------
+
+	ListNode prev = null;
+	ListNode curr = head;
+
+	while(curr != null){
+
+		ListNode tempNode = curr.next;
+
+		curr.next = prev;
+
+		prev = curr;
+		curr = tempNode;
+	}
+
+	return prev;
