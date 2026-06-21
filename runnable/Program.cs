@@ -1,34 +1,16 @@
-﻿using System.Text;
+﻿var input = new string[] { "carry", "car", "cartoon" };
+var output = "car";
 
-ListNode ReverseList(ListNode head)
-{
-    ListNode prev = null;
-    ListNode curr = head;
+//var input = new string[] { "flow", "flower", "flight" };
+//var output = "fl";
 
-    while (curr != null)
-    {
-        ListNode temp = curr.next;
-        curr.next = prev;
-        prev = curr;
-        curr = temp;
-    }
+//var input = new string[] { "abc", "a", "abcd" };
+//var output = "a";
 
-    return prev;
-}
+//var input = new string[] { "racecar", "car", "dog" };
+//var output = "";
 
-ListNode input = new(1);
-input.next = new ListNode(2);
-input.next.next = new ListNode(3);
-input.next.next.next = new ListNode(4);
-input.next.next.next.next = new ListNode(5);
+var result = LC14LongestCommonPrefix.Execute(input);
 
-ListNode output = ReverseList(input);
-
-var sb = new StringBuilder();
-
-while (output is not null) {
-    sb.Append(output.val).Append(" ");
-    output = output.next;
-}
-
-Console.WriteLine(sb.ToString());
+Console.WriteLine(result);
+Console.WriteLine(output);
