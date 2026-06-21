@@ -1,129 +1,52 @@
-Let's forget Linked Lists for a second.
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     public ListNode(int val=0, ListNode next=null) {
+ *         this.val = val;
+ *         this.next = next;
+ *     }
+ * }
+ */
 
-Suppose I ask you:
+public class Solution {
+    public ListNode AddTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode data = null;
+        ListNode output = data;
+        int carry = 0, rest = 0, total = 0, leftNum = 0, rightNum = 0;
 
-999999999999999999999999999999999999999999 + 1
+        while(l1 is not null || l2 is not null){
 
-How do you solve it on paper?
+            leftNum = l1 is not null ? l1.val : 0;
+            rightNum = l2 is not null ? l2.val : 0;
 
-Do you first convert it to an int?
+            total = (leftNum + rightNum + carry);
 
-int n = 999999999999999999999999999999999999999999;
+            if(total >= 10){
+                carry = (total / 10);
+                rest = (total % 10);
+                total = rest;
+            }
+            else
+                carry = 0;
 
-No, that's impossible.
+            if(data is null){
+                data = new ListNode(total);
+                output = data;
+            } else {
+                data.next = new ListNode(total);
+                data = data.next;
+            }
 
-Instead, you do:
+            if(l1 is not null) l1 = l1.next;
+            if(l2 is not null) l2 = l2.next;
 
-9 + 1 = 10
-write 0
-carry 1
+        }
 
-9 + carry = 10
-write 0
-carry 1
+        if (carry > 0)
+            data.next = new ListNode(carry);
 
-9 + carry = 10
-write 0
-carry 1
-
-...
-
-until the end.
-
-You only ever need:
-
-current digit
-carry
-
-Now look at the LeetCode input:
-
-l1 = [9,9,9,9]
-l2 = [1]
-
-Because the list is reversed, this means:
-
-9999 + 1
-
-The first nodes already contain the least significant digits:
-
-9 + 1 = 10
-
-So:
-
-digit = 0
-carry = 1
-
-Create:
-
-[0]
-
-Move to next nodes:
-
-9 + 0 + carry(1) = 10
-
-Create:
-
-[0,0]
-
-Move again:
-
-9 + 0 + carry(1) = 10
-
-Create:
-
-[0,0,0]
-
-Move again:
-
-9 + 0 + carry(1) = 10
-
-Create:
-
-[0,0,0,0]
-
-No more nodes, but:
-
-carry = 1
-
-So append:
-
-[0,0,0,0,1]
-
-Done.
-
-Your code does this:
-
-[9,9,9,9] -> 9999
-[1]        -> 1
-
-9999 + 1 = 10000
-
-10000 -> [0,0,0,0,1]
-
-The official solution does this:
-
-9 + 1 -> 0 carry 1
-9 + 0 + carry -> 0 carry 1
-9 + 0 + carry -> 0 carry 1
-9 + 0 + carry -> 0 carry 1
-carry -> 1
-
-Notice:
-
-Both produce the same answer.
-
-The difference is that your solution needs to store:
-
-9999
-10000
-
-while the official solution never stores those numbers at all.
-
-It only stores:
-
-int carry;
-int digit;
-
-So when the input represents a 100-digit number, the official solution still works because it never tries to create a 100-digit integer in memory.
-
-Does that part make sense now: "convert to number first" vs "add one digit at a time with carry"?
+        return output;
+    }
+}
