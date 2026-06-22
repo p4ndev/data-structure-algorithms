@@ -1,16 +1,17 @@
-﻿var input = new string[] { "carry", "car", "cartoon" };
-var output = "car";
+﻿//var nums1 = new int[] { 2, 2, 4, 4 };
+//var nums2 = new int[] { 2, 2, 2, 4, 4 };
+//var exp = 2.0;
 
-//var input = new string[] { "flow", "flower", "flight" };
-//var output = "fl";
+//var nums1 = new int[] { 1, 3 };
+//var nums2 = new int[] { 2 };
+//var exp = 2.0;
 
-//var input = new string[] { "abc", "a", "abcd" };
-//var output = "a";
+var nums1 = new int[] { 1, 2 };
+var nums2 = new int[] { 3, 4 };
+var exp = 2.5;
 
-//var input = new string[] { "racecar", "car", "dog" };
-//var output = "";
+var res = LC4.SecondApproach.Execute(nums1, nums2);
 
-var result = LC14LongestCommonPrefix.Execute(input);
-
-Console.WriteLine(result);
-Console.WriteLine(output);
+Console.WriteLine(res);
+Console.WriteLine(exp);
+Console.ReadKey();

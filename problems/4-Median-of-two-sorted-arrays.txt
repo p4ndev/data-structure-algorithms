@@ -1,0 +1,118 @@
+40ms Runtime	5,15 % Beats			58Mb Memory	5,39% Beats
+https://leetcode.com/problems/median-of-two-sorted-arrays/submissions/2042517707
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n))
+
+Example 1:
+
+	Input		: nums1 = [1,3], nums2 = [2]
+	Output		: 2.00000
+	Explanation	: merged array = [1,2,3] and median is 2.
+
+Example 2:
+
+	Input		: nums1 = [1,2], nums2 = [3,4]
+	Output		: 2.50000
+	Explanation	: merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.
+ 
+Constraints:
+
+nums1.length == m
+nums2.length == n
+
+0 <= m <= 1000
+0 <= n <= 1000
+
+1 <= m + n <= 2000
+
+-10^6 <= nums1[i], nums2[i] <= 10^6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Approach # 1 Wrong Answer
+2060 / 2099 testcases passed
+submitted at Jun 22, 2026 10:14
+
+public class Solution {
+    public double FindMedianSortedArrays(int[] nums1, int[] nums2) {        
+        int mx = Math.Max(nums1.Length, nums2.Length);
+        int acc = 0, div = 0;
+        double res = 0;
+
+        for(int i = 0; i < mx; i++){
+            if(nums1.Length > i)    acc += nums1[i];
+            if(nums2.Length > i)    acc += nums2[i];
+        }
+
+        div = (nums1.Length + nums2.Length);
+        res = ((double)acc / div);
+
+        return Math.Round(res, 5);
+    }
+}
+
+Input
+nums1 = [2,2,4,4]
+nums2 = [2,2,2,4,4]
+
+Use Testcase
+Output 		2.88889
+Expected 	2.00000
+
+
+
+
