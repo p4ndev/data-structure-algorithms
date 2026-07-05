@@ -1,5 +1,29 @@
-﻿string input = "3 + (2 - 1)";
-int output = Calculate(input), expectation = 4;
+﻿string input = "1-(     -2)"; // OUTPUT (Incorrect): -1
+int output = Calculate(input), expectation = 3;
+
+//string input = "(-2+3)"; // OUTPUT (Incorrect): -1
+//int output = Calculate(input), expectation = 1;
+
+//string input = "(-2-3)"; // OUTPUT (Incorrect): -5
+//int output = Calculate(input), expectation = -5;
+
+//string input = "1+(-2)"; // OUTPUT (Incorrect): 3
+//int output = Calculate(input), expectation = -1;
+
+//string input = "-(2+3)"; // OUTPUT (Incorrect): 5
+//int output = Calculate(input), expectation = -5;
+
+//string input = "-(1-(2+3))"; // OUTPUT (Incorrect): -4
+//int output = Calculate(input), expectation = 4;
+
+//string input = "-2147483647"; // OUTPUT (Incorrect): 2147483647
+//int output = Calculate(input), expectation = -2147483647;
+
+//string input = "0-(-1)"; // OUTPUT (Incorrect): -1
+//int output = Calculate(input), expectation = 1;
+
+//string input = "(-123)"; // OUTPUT (Incorrect): 123
+//int output = Calculate(input), expectation = -123;
 
 Console.WriteLine("Input: {0}\nOutput: {1}\nExpectation: {2}", input, output, expectation);
 
