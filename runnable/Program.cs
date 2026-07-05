@@ -1,138 +1,113 @@
-﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Running;
+﻿string input = "3 + (2 - 1)";
+int output = Calculate(input), expectation = 4;
 
-var benchmark = new NextGreaterElement();
-List<int> tmp;
+Console.WriteLine("Input: {0}\nOutput: {1}\nExpectation: {2}", input, output, expectation);
 
-benchmark.Setup();
+/***********************************************************************************************************************/
+/***********************************************************************************************************************/
+/***********************************************************************************************************************/
 
-Console.WriteLine("I/P: [{0}]", string.Join(", ", benchmark.arr));
-Console.WriteLine();
+void PersistPendingData(Stack<string> storage, System.Text.StringBuilder sb) {
+    if (sb.Length <= 0)
+        return;
 
-Console.WriteLine("O/P: [{0}]", string.Join(", ", benchmark.exp));
-Console.WriteLine();
+    storage.Push(sb.ToString());
+    sb.Clear();
+}
 
-tmp = benchmark.Naive();
-Console.WriteLine(string.Join(", ", tmp));
-Console.WriteLine("Equal: {0}", tmp.SequenceEqual(benchmark.exp));
-Console.WriteLine();
-
-tmp = benchmark.Linq_Naive();
-Console.WriteLine(string.Join(", ", tmp));
-Console.WriteLine("Equal: {0}", tmp.SequenceEqual(benchmark.exp));
-Console.WriteLine();
-
-tmp = benchmark.Monotomic_Stack();
-Console.WriteLine(string.Join(", ", tmp));
-Console.WriteLine("Equal: {0}", tmp.SequenceEqual(benchmark.exp));
-Console.WriteLine();
-
-BenchmarkRunner.Run<NextGreaterElement>();
-
-public class NextGreaterElement
+void FillOperations(Stack<string> storage, Queue<int> numbers, Queue<bool> sumOperations)
 {
-    public int[] arr = [];
-    public int[] exp = [];
-
-    [GlobalSetup]
-    public void Setup()
-    {
-        //arr = [6, 8, 0, 1, 3];
-        //exp = [8, -1, 1, 3, -1];
-
-        //arr = [9, 4, 6, 15, 2];
-        //exp = [15, 6, 15, -1, -1];
-
-        //arr = [2, 1, 5, 2, 9];
-        //exp = [5, 5, 9, 9, -1];
-
-        arr = [
-            100, 1, 99, 2, 98, 3, 97, 4, 96, 5,
-            95, 6, 94, 7, 93, 8, 92, 9, 91, 10,
-            90, 11, 89, 12, 88, 13, 87, 14, 86, 15,
-            85, 16, 84, 17, 83, 18, 82, 19, 81, 20,
-            80, 21, 79, 22, 78, 23, 77, 24, 76, 25,
-            75, 26, 74, 27, 73, 28, 72, 29, 71, 30,
-            70, 31, 69, 32, 68, 33, 67, 34, 66, 35,
-            65, 36, 64, 37, 63, 38, 62, 39, 61, 40,
-            60, 41, 59, 42, 58, 43, 57, 44, 56, 45,
-            55, 46, 54, 47, 53, 48, 52, 49, 51, 50
-        ];
-
-        exp = [
-            -1, 99, -1, 98, -1, 97, -1, 96, -1, 95,
-            -1, 94, -1, 93, -1, 92, -1, 91, -1, 90,
-            -1, 89, -1, 88, -1, 87, -1, 86, -1, 85,
-            -1, 84, -1, 83, -1, 82, -1, 81, -1, 80,
-            -1, 79, -1, 78, -1, 77, -1, 76, -1, 75,
-            -1, 74, -1, 73, -1, 72, -1, 71, -1, 70,
-            -1, 69, -1, 68, -1, 67, -1, 66, -1, 65,
-            -1, 64, -1, 63, -1, 62, -1, 61, -1, 60,
-            -1, 59, -1, 58, -1, 57, -1, 56, -1, 55,
-            -1, 54, -1, 53, -1, 52, -1, 51, -1, -1
-        ];
-
-        //arr = Enumerable.Range(1, 1_000_000).Reverse().ToArray();
-        //exp = Enumerable.Repeat(-1, 1_000_000).ToArray();
-    }
-
-    [Benchmark]
-    public List<int> Naive()
-    {
-        List<int> output = Enumerable.Repeat(-1, arr.Length).ToList();
-
-        for (int i = 0; i < arr.Length; i++)
+    while (storage.TryPop(out string? term) && !term.Equals(")"))
+        switch (term)
         {
-            for (int j = i + 1; j < arr.Length; j++)
+            case "+":   sumOperations.Enqueue(true);                break;
+            case "-":   sumOperations.Enqueue(false);               break;
+            default:    numbers.Enqueue(Convert.ToInt32(term));     break;
+        }
+}
+
+void SolveOperations(Stack<string> storage, Queue<int> numbers, Queue<bool> sumOperations)
+{
+    bool isSum;
+    int left = numbers.Dequeue(), right;
+    
+    while(numbers.TryDequeue(out right))
+        if(sumOperations.TryDequeue(out isSum))
+            switch (isSum)
             {
-                if (arr[i] < arr[j])
-                {
-                    output[i] = arr[j];
+                case true:
+                    left += right;
                     break;
-                }
+
+                case false:
+                    left -= right;
+                    break;
             }
-        }
 
-        return output;
-    }
+    storage.Push(left.ToString());
+}
 
-    [Benchmark]
-    public List<int> Linq_Naive()
+/***********************************************************************************************************************/
+/***********************************************************************************************************************/
+/***********************************************************************************************************************/
+
+int Calculate(string s)
+{
+    if (String.IsNullOrWhiteSpace(s))
+        return default;
+
+    #region Declaration
+    char input;
+
+    System.Text.StringBuilder sb = new();
+    Stack<string> storage = new();
+
+    Queue<int> numbers = new();
+    Queue<bool> sumOperations = new();
+    #endregion
+
+    for (int i = (s.Length - 1); i >= 0; i--)
     {
-        List<int> output = new();
+        input = s[i];
 
-        for (int i = 0; i < arr.Length; i++)
+        switch(input)
         {
-            var element = arr
-                .Skip(i + 1)
-                .Where(a => arr[i] < a)
-                .DefaultIfEmpty(-1)
-                .First();
+            case var c when Char.IsWhiteSpace(c):
+                PersistPendingData(storage, sb);
+                break;
 
-            output.Add(element);
+            case var d when Char.IsDigit(d):
+                sb.Insert(0, input);
+                break;
+
+            case ')':
+            case '+':
+            case '-':
+                PersistPendingData(storage, sb);
+                storage.Push(input.ToString());
+                break;
+
+            case '(':
+                numbers.Clear();
+                sumOperations.Clear();
+
+                PersistPendingData(storage, sb);
+                FillOperations(storage, numbers, sumOperations);
+                SolveOperations(storage, numbers, sumOperations);
+                break;
         }
-
-        return output;
     }
 
-    [Benchmark]
-    public List<int> Monotomic_Stack()
+    PersistPendingData(storage, sb);
+
+    if (storage.Count > 1)
     {
-        Stack<int> storage = new();
+        numbers.Clear();
+        sumOperations.Clear();
 
-        List<int> output = Enumerable.Repeat(-1, arr.Length).ToList();
-
-        for (int i = arr.Length - 1; i >= 0; i--)
-        {
-            while (storage.Count > 0 && storage.Peek() <= arr[i])
-                storage.Pop();
-
-            if (storage.Count > 0)
-                output[i] = storage.Peek();
-
-            storage.Push(arr[i]);
-        }
-
-        return output;
+        FillOperations(storage, numbers, sumOperations);
+        SolveOperations(storage, numbers, sumOperations);
     }
+    
+    return Convert.ToInt32(storage.Pop());
 }
