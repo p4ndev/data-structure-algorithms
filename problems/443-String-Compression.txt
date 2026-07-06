@@ -1,3 +1,0 @@
-3ms Runtime	75% Beats		62 Mb Memory	60% Beats
-https://leetcode.com/problems/string-compression/submissions/2030219117
-
