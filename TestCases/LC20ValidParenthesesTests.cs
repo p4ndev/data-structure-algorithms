@@ -1,10 +1,8 @@
-﻿using Problems;
-
-namespace LC20;
+﻿namespace LC20;
 
 public class ValidParenthesesTests
 {
-    private readonly LC20ValidParentheses _sut;
+    private readonly Problems.LC20 _sut;
 
     // Arrange
     public ValidParenthesesTests()

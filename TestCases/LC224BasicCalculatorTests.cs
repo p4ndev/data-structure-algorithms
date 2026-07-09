@@ -1,10 +1,8 @@
-﻿using Problems;
-
-namespace LC224;
+﻿namespace LC224;
 
 public class BasicCalculatorTests
 {
-    private readonly LC224BasicCalculator _sut;
+    private readonly Problems.LC224 _sut;
 
     // Arrange
     public BasicCalculatorTests()

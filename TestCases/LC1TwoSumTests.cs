@@ -1,6 +1,4 @@
-﻿using Problems;
-
-namespace LC1;
+﻿namespace LC1;
 
 public class TwoSumTests
 {
@@ -72,7 +70,7 @@ public class TwoSumTests
     private void Validate(int[] input, int target, (int total, int[] indexes) expectations)
     {
         // Act
-        int[] results = LC1TwoSum.Run(input, target);
+        int[] results = Problems.LC1.TwoSum(input, target);
 
         // Assert
         Assert.NotNull(results);

@@ -1,37 +1,36 @@
-﻿namespace Problems
+﻿namespace Problems;
+
+public class LC443
 {
-    public class LC443StringCompression
+    /*
+    3ms Runtime	75% Beats		62 Mb Memory	60% Beats
+    https://leetcode.com/problems/string-compression/submissions/2030219117 
+    */
+    public int StringCompression(char[] chars)
     {
-        /*
-        3ms Runtime	75% Beats		62 Mb Memory	60% Beats
-        https://leetcode.com/problems/string-compression/submissions/2030219117 
-        */
-        public int Compress(char[] chars)
+        int write = 0;
+        int read = 0;
+
+        while (read < chars.Length)
         {
-            int write = 0;
-            int read = 0;
+            char current = chars[read];
+            int count = 0;
 
-            while (read < chars.Length)
+            while (read < chars.Length && chars[read] == current)
             {
-                char current = chars[read];
-                int count = 0;
-
-                while (read < chars.Length && chars[read] == current)
-                {
-                    read++;
-                    count++;
-                }
-
-                chars[write++] = current;
-
-                if (count > 1)
-                    foreach (char digit in count.ToString())
-                    {
-                        chars[write++] = digit;
-                    }
+                read++;
+                count++;
             }
 
-            return write;
+            chars[write++] = current;
+
+            if (count > 1)
+                foreach (char digit in count.ToString())
+                {
+                    chars[write++] = digit;
+                }
         }
+
+        return write;
     }
 }
