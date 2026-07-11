@@ -1,11 +1,29 @@
-﻿public class ListNode
+﻿public class ListNode<T>
 {
-    public int val;
-    public ListNode next;
+    public T val;
+    public int idx;
 
-    public ListNode(int val = 0, ListNode next = null)
+    public ListNode<T>? next;
+    public ListNode<T>? previous;
+
+    public ListNode(T val)
     {
         this.val = val;
-        this.next = next;
+        this.idx = 0;
+
+        this.previous = null;
+        this.next = null;
     }
+
+    public ListNode(T val, int idx)
+        : this(val)
+            => this.idx = idx;
+
+    public ListNode(T val, int idx, ListNode<T> previous)
+        : this(val, idx)
+            => this.previous = previous;
+
+    public ListNode(T val, int idx, ListNode<T> previous, ListNode<T> next)
+        : this(val, idx, previous)
+            => this.next = next;
 }

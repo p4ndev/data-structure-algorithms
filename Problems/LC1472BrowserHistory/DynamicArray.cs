@@ -1,12 +1,8 @@
 ﻿namespace Problems.LC1472;
 
 /*
-Problems.LC1472.DynamicArray obj = new(homepage);
-
-obj.Visit(url);
-
-string param_2 = obj.Back(steps);
-string param_3 = obj.Forward(steps);
+4ms Runtime 86% Beats               63.48Mb Memory 87% Beats
+https://leetcode.com/problems/design-browser-history/submissions/2063952586
 */
 
 public class DynamicArray

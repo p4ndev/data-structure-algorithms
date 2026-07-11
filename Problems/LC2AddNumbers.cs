@@ -2,10 +2,10 @@
 
 public class LC2
 {
-    public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+    public ListNode<int> AddTwoNumbers(ListNode<int> l1, ListNode<int> l2)
     {
-        ListNode data = null;
-        ListNode output = data;
+        ListNode<int>? data = null;
+        ListNode<int>? output = data;
         int carry = 0, rest = 0, total = 0, leftNum = 0, rightNum = 0;
 
         while (l1 is not null || l2 is not null)
@@ -27,12 +27,12 @@ public class LC2
 
             if (data is null)
             {
-                data = new ListNode(total);
+                data = new(total);
                 output = data;
             }
             else
             {
-                data.next = new ListNode(total);
+                data.next = new(total);
                 data = data.next;
             }
 
@@ -42,8 +42,8 @@ public class LC2
         }
 
         if (carry > 0)
-            data.next = new ListNode(carry);
+            data!.next = new(carry);
 
-        return output;
+        return output!;
     }
 }

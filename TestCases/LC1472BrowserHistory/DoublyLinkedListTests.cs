@@ -1,29 +1,7 @@
 ﻿namespace LC1472;
 
-public class DynamicArrayTests
+public class DoublyLinkedListTests
 {
-    /*
-    Input:
-    ["BrowserHistory",  "visit",        "visit",            "visit",            "back",         "back",         "forward",          "visit",            "forward",          "back",             "back"]
-    [["leetcode.com"],  ["google.com"], ["facebook.com"],   ["youtube.com"],    [1],            [1],            [1],                ["linkedin.com"],   [2],                [2],                [7]]
-
-    Output:
-    [null,              null,           null,               null,               "facebook.com", "google.com",   "facebook.com",     null,               "linkedin.com",     "google.com",       "leetcode.com"]
-
-    Explanation:
-    BrowserHistory browserHistory = new BrowserHistory("leetcode.com");
-    browserHistory.visit("google.com");       // You are in "leetcode.com". Visit "google.com"
-    browserHistory.visit("facebook.com");     // You are in "google.com". Visit "facebook.com"
-    browserHistory.visit("youtube.com");      // You are in "facebook.com". Visit "youtube.com"
-    browserHistory.back(1);                   // You are in "youtube.com", move back to "facebook.com" return "facebook.com"
-    browserHistory.back(1);                   // You are in "facebook.com", move back to "google.com" return "google.com"
-    browserHistory.forward(1);                // You are in "google.com", move forward to "facebook.com" return "facebook.com"
-    browserHistory.visit("linkedin.com");     // You are in "facebook.com". Visit "linkedin.com"
-    browserHistory.forward(2);                // You are in "linkedin.com", you cannot move forward any steps.
-    browserHistory.back(2);                   // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return "google.com"
-    browserHistory.back(7);                   // You are in "google.com", you can move back only one step to "leetcode.com". return "leetcode.com" 
-    */
-
     [Theory]
     [InlineData("leetcode.com", 1, true)]
     [InlineData("leetcode.com", 1, false)]
@@ -36,7 +14,7 @@ public class DynamicArrayTests
     public void Should_Return_Homepage_When_Navigate(string url, int steps, bool isBack = true)
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray(url);
+        var browser = new Problems.LC1472.DoublyLinkedList(url);
 
         // Act
         var result = (isBack ? browser.Back(steps) : browser.Forward(steps));
@@ -59,7 +37,7 @@ public class DynamicArrayTests
     public void Should_Navigate_Back(string[] urls, int steps, string expectation)
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray("leetcode.com");
+        var browser = new Problems.LC1472.DoublyLinkedList("leetcode.com");
         
         foreach (var url in urls)
             browser.Visit(url);
@@ -68,7 +46,7 @@ public class DynamicArrayTests
         var result = browser.Back(steps);
 
         // Assert
-        Assert.Equal(expectation, result);
+        Assert.Equal(expectation, result);        
     }
 
     [Fact]
@@ -76,7 +54,7 @@ public class DynamicArrayTests
     {
         // Act
         var exception = Assert.Throws<ArgumentException>(() => {
-            _ = new Problems.LC1472.DynamicArray("");
+            _ = new Problems.LC1472.DoublyLinkedList("");
         });
 
         // Assert
@@ -87,7 +65,7 @@ public class DynamicArrayTests
     public void Should_Throws_An_Invalid_Url_Exception()
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray("leetcode.com");
+        var browser = new Problems.LC1472.DoublyLinkedList("leetcode.com");
 
         // Act
         var exception = Assert.Throws<ArgumentException>(() => {
@@ -102,26 +80,27 @@ public class DynamicArrayTests
     public void Should_Navigate_Forward_After_Back()
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray("leetcode.com");
+        var browser = new Problems.LC1472.DoublyLinkedList("leetcode.com");
 
         browser.Visit("google.com");
         browser.Visit("facebook.com");
         browser.Visit("youtube.com");
 
-        browser.Back(1);
+        var firstResult = browser.Back(1);
 
         // Act
-        var result = browser.Forward(1);
+        var secondResult = browser.Forward(1);
 
         // Assert
-        Assert.Equal("youtube.com", result);
+        Assert.Equal("facebook.com", firstResult);
+        Assert.Equal("youtube.com", secondResult);
     }
 
     [Fact]
     public void Should_Not_Go_Forward_Beyond_Last_Page()
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray("leetcode.com");
+        var browser = new Problems.LC1472.DoublyLinkedList("leetcode.com");
 
         browser.Visit("google.com");
         browser.Visit("facebook.com");
@@ -140,7 +119,7 @@ public class DynamicArrayTests
     public void Visit_Should_Clear_Forward_History()
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray("leetcode.com");
+        var browser = new Problems.LC1472.DoublyLinkedList("leetcode.com");
 
         browser.Visit("google.com");
         browser.Visit("facebook.com");
@@ -162,7 +141,7 @@ public class DynamicArrayTests
     public void Should_Handle_Official_Example()
     {
         // Arrange
-        var browser = new Problems.LC1472.DynamicArray("leetcode.com");
+        var browser = new Problems.LC1472.DoublyLinkedList("leetcode.com");
 
         // Act
         browser.Visit("google.com");
