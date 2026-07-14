@@ -11,15 +11,15 @@ public class DoublyLinkedList
     private int _total;
     private int _available;
 
-    private ListNode<string> _current;
-    private ListNode<string> _head, _tail;
+    private DoublyListNode<string> _current;
+    private DoublyListNode<string> _head, _tail;
 
     public DoublyLinkedList(string homepage)
     {
         if (String.IsNullOrWhiteSpace(homepage))
             throw new ArgumentException("Please provide a valid homepage");
 
-        ListNode<string> storage = new(homepage);
+        DoublyListNode<string> storage = new(homepage);
         
         _total = 1;
         _idx = _available = 0;
@@ -32,7 +32,7 @@ public class DoublyLinkedList
             throw new ArgumentException("Please provide a valid url");
 
         int nextIndex = (_current.next is null ? (_idx + 1) : _current.next.idx);
-        var node = new ListNode<string>(url, nextIndex);
+        var node = new DoublyListNode<string>(url, nextIndex);
 
         _idx = nextIndex;
         _total = (_idx + 1);

@@ -2,10 +2,10 @@
 
 public class LC2
 {
-    public ListNode<int> AddTwoNumbers(ListNode<int> l1, ListNode<int> l2)
+    public DoublyListNode<int> AddTwoNumbers(DoublyListNode<int> l1, DoublyListNode<int> l2)
     {
-        ListNode<int>? data = null;
-        ListNode<int>? output = data;
+        DoublyListNode<int>? data = null;
+        DoublyListNode<int>? output = data;
         int carry = 0, rest = 0, total = 0, leftNum = 0, rightNum = 0;
 
         while (l1 is not null || l2 is not null)

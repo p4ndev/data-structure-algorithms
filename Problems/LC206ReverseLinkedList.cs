@@ -6,9 +6,9 @@ public class LC206
     1ms Runtime	4,45% Beats	    42 Mb Memory		70% Beats
     https://leetcode.com/problems/reverse-linked-list/submissions/2031106636/ 
     */
-    public ListNode<int> ReverseList(ListNode<int> head)
+    public DoublyListNode<int> ReverseList(DoublyListNode<int> head)
     {
-        ListNode<int> initial = head;
+        DoublyListNode<int> initial = head;
         var storage = new Stack<int>();
 
         while (head is not null)
