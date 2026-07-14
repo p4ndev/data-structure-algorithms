@@ -2,6 +2,11 @@
 
 #pragma warning disable CS8600
 
+/*
+2ms Runtime 5.45% Beats                 45.07Mb Memory 8.05% Beats
+https://leetcode.com/problems/merge-two-sorted-lists/submissions/2067438652
+*/
+
 public class LC21
 {
     private List<int> Accumulator { get; set; } = new();
@@ -18,7 +23,10 @@ public class LC21
 
     public ListNode MergeTwoLists(ListNode list1, ListNode list2)
     {
-        ListNode output;
+        ListNode? output = null, aux = null;
+
+        if (list1 is null && list2 is null)
+            return output;
 
         while(list1 is not null || list2 is not null)
         {
@@ -34,18 +42,22 @@ public class LC21
         }
 
         if (!Accumulator.Any())
-            return new ListNode();
-   
-        output = new(Accumulator.FirstOrDefault());
-        ListNode? tmp = output.next;
-        
-        foreach (int num in Accumulator.Skip(1))
+            return output;
+
+        foreach (int num in Accumulator)
         {
-            tmp = new(num);
-            tmp = tmp.next;
+            if(output is null)
+            {
+                output = new(num);
+                aux = output;
+                continue;
+            }
+
+            aux.next = new(num);
+            aux = aux.next;
         }
 
-        return output;
+        return output!;
     }
 }
 
