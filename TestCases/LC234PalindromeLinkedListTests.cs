@@ -11,10 +11,12 @@ public class LC234PalindromeLinkedListTests
     public void Should_Return_True_When_List_Is_Empty()
     {
         // Act
-        var result = _sut.IsPalindrome(null);
+        var result0 = _sut.IsPalindromeExtraSpace(null);
+        var result1 = _sut.IsPalindrome(null);
 
         // Assert
-        Assert.True(result);
+        Assert.True(result0);
+        Assert.True(result1);
     }
 
     [Fact]
@@ -24,10 +26,12 @@ public class LC234PalindromeLinkedListTests
         var head = new ListNode(1);
 
         // Act
-        var result = _sut.IsPalindrome(head);
+        var result0 = _sut.IsPalindromeExtraSpace(head);
+        var result1 = _sut.IsPalindrome(head);
 
         // Assert
-        Assert.True(result);
+        Assert.True(result0);
+        Assert.True(result1);
     }
 
     [Fact]
@@ -37,10 +41,12 @@ public class LC234PalindromeLinkedListTests
         var head = Problems.Shared.Utils.CreateList(1, 2, 2, 1);
 
         // Act
-        var result = _sut.IsPalindrome(head);
+        var result0 = _sut.IsPalindromeExtraSpace(head);
+        var result1 = _sut.IsPalindrome(head);
 
         // Assert
-        Assert.True(result);
+        Assert.True(result0);
+        Assert.True(result1);
     }
 
     [Fact]
@@ -50,10 +56,27 @@ public class LC234PalindromeLinkedListTests
         var head = Problems.Shared.Utils.CreateList(1, 2, 3, 2, 1);
 
         // Act
-        var result = _sut.IsPalindrome(head);
+        var result0 = _sut.IsPalindromeExtraSpace(head);
+        var result1 = _sut.IsPalindrome(head);
 
         // Assert
-        Assert.True(result);
+        Assert.True(result0);
+        Assert.True(result1);
+    }
+
+    [Fact]
+    public void Should_Return_True_When_List_Is_Odd_Palindrome_Simple()
+    {
+        // Arrange
+        var head = Problems.Shared.Utils.CreateList(1,0,1);
+
+        // Act
+        var result0 = _sut.IsPalindromeExtraSpace(head);
+        var result1 = _sut.IsPalindrome(head);
+
+        // Assert
+        Assert.True(result0);
+        Assert.True(result1);
     }
 
     [Fact]
@@ -63,10 +86,12 @@ public class LC234PalindromeLinkedListTests
         var head = Problems.Shared.Utils.CreateList(1, 2, 3);
 
         // Act
-        var result = _sut.IsPalindrome(head);
+        var result0 = _sut.IsPalindromeExtraSpace(head);
+        var result1 = _sut.IsPalindrome(head);
 
         // Assert
-        Assert.False(result);
+        Assert.False(result0);
+        Assert.False(result1);
     }
 
     [Fact]
@@ -76,9 +101,11 @@ public class LC234PalindromeLinkedListTests
         var head = Problems.Shared.Utils.CreateList(1, 2, 2, 3);
 
         // Act
-        var result = _sut.IsPalindrome(head);
+        var result0 = _sut.IsPalindromeExtraSpace(head);
+        var result1 = _sut.IsPalindrome(head);
 
         // Assert
-        Assert.False(result);
+        Assert.False(result0);
+        Assert.False(result1);
     }
 }
