@@ -16,9 +16,11 @@ public class LC202HappyNumberTests
     public void Should_Return_Expected_Result(int n, bool expected)
     {
         // Act
-        var result = _sut.IsHappy(n);
+        var result0 = _sut.IsHappyFastSlowPointers(n);
+        var result1 = _sut.IsHappyNaiveExtraSpace(n);
 
         // Assert
-        Assert.Equal(expected, result);
+        Assert.Equal(expected, result0);
+        Assert.Equal(expected, result1);
     }
 }
