@@ -4,19 +4,23 @@ public partial class LC303
 {
     public class NumArrayPrefixSum
     {
-        private readonly int[] prefArr;
+        private readonly int[] _n;
 
-        public NumArrayPrefixSum(int[] nums)
+        public NumArrayPrefixSum(int[] n)
         {
-            prefArr = new int[nums.Length + 1];
-
-            for (var i = 0; i < nums.Length; i++)
-                prefArr[i + 1] = prefArr[i] + nums[i];
+            for (int i = 1; i < n.Length; i++)
+                n[i] = n[i - 1] + n[i];
+            _n = n;
         }
 
-        public int SumRange(int left, int right)
+        public int SumRange(int l, int r)
         {
-            return prefArr[right + 1] - prefArr[left];
+            int a = _n[r];
+
+            if (l != 0)
+                a -= _n[l - 1];
+
+            return a;
         }
     }
 }
