@@ -1,4 +1,50 @@
-﻿// [ Y ] https://www.geeksforgeeks.org/dsa/split-array-two-equal-sum-subarrays/
+﻿// [ Y ] https://www.geeksforgeeks.org/dsa/equilibrium-index-of-an-array/
+
+int expected = 2;
+int[] arr = { 1, 2, 0, 3 };
+
+//int expected = 3;
+//int[] arr = { 1, -1, 1, -1, 0 };
+
+//int expected = -1;
+//int[] arr = { 1, 1, 1, 1 };
+
+//int expected = 3;
+//int[] arr = { -7, 1, 5, 2, -4, 3, 0 };
+
+//int expected = 4;
+//int[] arr = { 1, 2, 3, 4, 6 };
+
+int result = Equilibrium.Find(arr);
+
+Console.WriteLine(string.Join(",", result));
+Console.WriteLine(string.Join(",", expected));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// [ Y ] https://www.geeksforgeeks.org/dsa/split-array-two-equal-sum-subarrays/
 
 //bool expected = true;
 //int[] arr = { 1, 2, 3, 4, 5, 5 };
@@ -23,32 +69,6 @@
 //Console.ForegroundColor = (result == expected ? ConsoleColor.Green : ConsoleColor.Red);
 //Console.WriteLine("The array items [{0}] is {1}able to split.", string.Join(",", arr), (result ? "" : "not "));
 //Console.ResetColor();
-
-
-
-
-
-
-
-
-
-
-
-
-// [   ] https://www.geeksforgeeks.org/dsa/equilibrium-index-of-an-array/
-
-//int expected = 2;
-//int[] arr = { 1, 2, 0, 3 };
-
-//int result = Equilibrium.Find(arr);
-
-//Console.WriteLine(string.Join(",", result));
-//Console.WriteLine(string.Join(",", expected));
-
-
-
-
-
 
 
 
