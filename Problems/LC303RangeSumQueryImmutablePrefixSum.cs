@@ -2,6 +2,11 @@ namespace Problems;
 
 public partial class LC303
 {
+    // 00:00        Prefix Sum + Math
+    // 0ms          Runtime         100 % Beats
+    // 0Mb          Memory          100 % Beats
+    // https://leetcode.com/problems/range-sum-query-immutable/submissions/2117295124
+
     public class NumArrayPrefixSum
     {
         private readonly int[] _n;

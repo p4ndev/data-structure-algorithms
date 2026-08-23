@@ -16,8 +16,8 @@ public class Scenarios
     }
 
     [Theory]
+    [InlineData(new[] { 1, -1, 0 }, 0, 3)]
     [InlineData(new[] { 3, 4, -2, 5, -1, 2, 6 }, 7, 3)]
-    [InlineData(new[] { 1, -1, 2, 1, -1 }, 2, 3)]
     [InlineData(new[] { 2, 1, 3, 2, 5, 1 }, 5, 2)]
     public void Total_With_Sum_K(int[] n, int k, int e)
     {
@@ -32,6 +32,7 @@ public class Scenarios
     [InlineData(new[] { 2, 3, 1, 4, 2 }, 5, 4)]
     [InlineData(new[] { 1, 4, 2, 3 }, 5, 3)]
     [InlineData(new[] { 2, 3, 5 }, 5, 3)]
+    [InlineData(new[] { -1, 2, 9 }, 2, 2)]
     public void Total_Divisible_By_K(int[] n, int k, int e)
     {
         // Act
