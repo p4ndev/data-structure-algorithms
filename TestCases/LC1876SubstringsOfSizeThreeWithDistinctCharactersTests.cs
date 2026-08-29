@@ -8,9 +8,13 @@ public class LC1876SubstringsOfSizeThreeWithDistinctCharactersTests
         => _sut = new();
 
     [Theory]
+    [InlineData("abc", 1)]
+    [InlineData("xyy", 0)]
+    [InlineData("xxx", 0)]
+    [InlineData("xxy", 0)]
+    [InlineData("xxxabc", 1)]
     [InlineData("xyzzaz", 1)]
     [InlineData("aababcabc", 4)]
-    [InlineData("abc", 1)]
     [InlineData("aaa", 0)]
     [InlineData("a", 0)]
     [InlineData("ab", 0)]

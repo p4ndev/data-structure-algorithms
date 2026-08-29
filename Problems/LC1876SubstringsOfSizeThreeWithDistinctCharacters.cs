@@ -4,7 +4,7 @@ public class LC1876
 {
     public int CountGoodSubstrings(string s)
     {
-        int k = 3, o = -1;
+        int k = 3, o = 0;
 
         if (s.Length < 3)
             return o;
