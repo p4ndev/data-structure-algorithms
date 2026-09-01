@@ -2,43 +2,43 @@ namespace Problems;
 
 public class LC1876
 {
-    public int CountGoodSubstrings(string s) {
-        int k = 3, o = 0;
+    public int CountGoodSubstringsExtraSpace(string s) {
+        
+        // Runtime  : 1 ms       48%
+        // Memory   : 40 Mb       7%
+        // https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/submissions/2126674345
+        
+        int o = 0;
 
-        if (s.Length < 3)
-            return o;
+        for (int i = 0; i <= (s.Length - 3); i++)
+            if (new HashSet<char>() {
+                s[i],       // Left
+                s[i + 1],   // Middle
+                s[i + 2]    // Right
+            }.Count == 3)
+                o++;
 
-        int a = 0, p = 0;
-        char l = s[a];
-        int t = (l - 'a');
+        return o;
+    }
 
-        for (int i = 1; i < k; i++) {
-            p = (i + a);
+    public int CountGoodSubstringsLinear(string s) {
 
-            if (s.Length != k) {
-                if ((a + 1) > (s.Length - k))
-                    return o;
+        // Runtime  : 0 ms        100%
+        // Memory   : 38 Mb        65%
+        // https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/submissions/2126674811
 
-                if (l == s[p]) {
-                    l = s[p];
-                    t = (l - 'a');
-                    a++;
-                    i--;
-                    continue;
-                }
-            }
-            else if (l == s[p])
-                return o;
+        int o = 0;
+        char l, m, r;
 
-            l = s[p];
-            t += (l - 'a');
+        for (int i = 0; i <= s.Length - 3; i++)
+        {
+            l = s[i];       // Left
+            m = s[i + 1];   // Middle
+            r = s[i + 2];   // Right
+
+            if (l != m && l != r && m != r)
+                o++;
         }
-
-        o++;
-        if (s.Length == k)
-            return o;
-
-        // review other combinations within the rest of the array
 
         return o;
     }
