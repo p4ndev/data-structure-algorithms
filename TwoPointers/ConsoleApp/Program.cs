@@ -1,5 +1,6 @@
 ﻿ProblemContract sc = new SwapCharacters();
 ProblemContract ts = new ThreeSum();
+ProblemContract mz = new MoveZeros();
 
-ts.Initialize();
-ts.Reset();
+mz.Initialize();
+mz.Reset();
