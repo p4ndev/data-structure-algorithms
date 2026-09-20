@@ -1,6 +1,9 @@
-﻿ProblemContract sc = new SwapCharacters();
-ProblemContract ts = new ThreeSum();
-ProblemContract mz = new MoveZeros();
+﻿ProblemContract pr;
 
-mz.Initialize();
-mz.Reset();
+pr = new MergeTwoSortedLists();
+//pr = new SwapCharacters();
+//pr = new ThreeSum();
+//pr = new MoveZeros();
+
+pr.Initialize();
+pr.Reset();

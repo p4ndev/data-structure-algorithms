@@ -6,7 +6,7 @@
     
     protected virtual void Review()
     {
-        Console.ForegroundColor = Expected!.Equals(Output) ? ConsoleColor.Green : ConsoleColor.Red;
+        Console.ForegroundColor = (Expected!.Equals(Output) ? ConsoleColor.Green : ConsoleColor.Red);
         Console.WriteLine(Output);
     }
 
