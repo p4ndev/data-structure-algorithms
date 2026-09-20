@@ -1,4 +1,7 @@
-﻿public class MergeTwoSortedLists : ProblemAbstraction<IList<int>, IList<int>, IList<int>>, ProblemContract
+﻿/// <summary>
+/// Organize data from two sorted list into a single list sorted too
+/// </summary>
+public class MergeTwoSortedLists : ProblemAbstraction<IList<int>, IList<int>, IList<int>>, ProblemContract
 {
     protected override void Review()
     {
