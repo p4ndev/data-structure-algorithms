@@ -9,6 +9,10 @@ public class ValidParenthesesTests
         => _sut = new();
 
     [Theory]
+    [InlineData("()))", false)]
+    [InlineData("))", false)]
+    [InlineData("([)]", false)]
+    [InlineData("(]", false)]
     [InlineData("[", false)]
     [InlineData("(){}[]", true)]
     [InlineData("([])", true)]

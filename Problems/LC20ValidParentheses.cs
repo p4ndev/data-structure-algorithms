@@ -5,33 +5,35 @@ public class LC20
     /*
     Runtime 7ms         20.10% beats
     Memory 42.22Mb      39.40% beats
-    https://leetcode.com/problems/valid-parentheses/submissions/2058557237 
+    https://leetcode.com/problems/valid-parentheses/submissions/2058557237  
     */
+
     public bool IsValid_Mine(string s)
     {
-        // Faltou os edge cases
+        if (s.Length == 1 || ((s.Length % 2) != 0))
+            return false;
 
-        Stack<char> storage = new();
-        Dictionary<char, char> dic = new() {
+        Stack<char> st = new();
+        Dictionary<char, char> dc = new() {
             { '(', ')' },
             { '{', '}' },
             { '[', ']' }
         };
 
-        for(int i = (s.Length - 1); i >= 0; i--)
+        for (int i = (s.Length - 1); i >= 0; i--)
         {
-            if (dic.ContainsKey(s[i]) &&
-                    storage.Count > 0 &&
-                        dic[s[i]].Equals(storage.Peek()))
+            if (st.Count > 0 &&
+                    dc.ContainsKey(s[i]) &&
+                        dc[s[i]] == st.Peek())
             {
-                storage.Pop();
+                st.Pop();
                 continue;
             }
 
-            storage.Push(s[i]);
+            st.Push(s[i]);
         }
 
-        return storage.Count.Equals(0);
+        return (st.Count == 0);
     }
 
     public bool IsValid_Best_Runtime(string s)
