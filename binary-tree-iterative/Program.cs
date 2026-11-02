@@ -1,19 +1,39 @@
-﻿var last = new Tree()
-                    .Add(2)
-                        .Add(4, ActionType.LEFT)
-                        .Add(5, ActionType.RIGHT);
+﻿/*
 
-// =================================================
+           1
+          / \
+         2   3
+        / \
+       4   5
 
-var first = new Tree()
+*/
+
+// =============================================================
+
+var initial = new IntegerTree()
+        .Add(2)
+            .Add(4, ActionTypeEnum.LEFT)
+            .Add(5, ActionTypeEnum.RIGHT);
+
+// =============================================================
+
+var tree = new IntegerTree()
     .Add(1)
-        .Merge(last, ActionType.LEFT)
-        .Add(3, ActionType.RIGHT);
+        .Merge(initial, ActionTypeEnum.LEFT)
+            .Add(3, ActionTypeEnum.RIGHT);
 
-// =================================================
+// ==================== BFS - Queue ============================
 
-//first.DepthFirstSearch(OrderType.PRE);
-//first.DepthFirstSearch(OrderType.IN);
-//first.DepthFirstSearch(OrderType.POST);
+// tree.BreadthFirstSearch();
 
-first.BreadthFirstSearch();
+// ==================== DFS - Stack ============================
+
+// tree.DepthFirstSearch(OrderTypeEnum.PRE);
+// tree.DepthFirstSearchRecursively(OrderTypeEnum.IN);
+// tree.DepthFirstSearchRecursively(OrderTypeEnum.POST);
+
+// ==================== DFS - Recursive ========================
+
+// tree.DepthFirstSearchRecursively(OrderTypeEnum.PRE);
+// tree.DepthFirstSearchRecursively(OrderTypeEnum.IN);
+// tree.DepthFirstSearchRecursively(OrderTypeEnum.POST);
